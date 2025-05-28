@@ -1,16 +1,28 @@
 package cl.duoc.ferremasapp.service;
 
 import cl.duoc.ferremasapp.model.Producto;
+import cl.duoc.ferremasapp.repository.ProductoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
-public interface ProductoService {
-    Producto registrarProducto(Producto p);
-    Optional<Producto> buscarPorId(Long id);
-    List<Producto> listarProductos();
-    Producto actualizarProducto(Producto p);
-    void eliminarProducto(Long id);
-    List<Producto> buscarPorNombre(String nombre);
-    List<Producto> buscarPorCategoria(String categoria);
-    List<Producto> buscarPorStockMenorA(int cantidad);
+@Service
+public class ProductoService {
+
+    @Autowired
+    private ProductoRepository productoRepository;
+
+    public List<Producto> findAll() {
+        return productoRepository.findAll();
+    }
+
+    public Optional<Producto> findById(Long id) {
+        return productoRepository.findById(id);
+    }
+
+    public Producto findByCodigo(String codigo) {
+        return productoRepository.findByCodigo(codigo);
+    }
 }
