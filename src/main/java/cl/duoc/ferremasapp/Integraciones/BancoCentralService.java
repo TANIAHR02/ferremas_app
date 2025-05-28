@@ -1,4 +1,4 @@
-package cl.duoc.ferremasapp.service;
+package cl.duoc.ferremasapp.Integraciones;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

@@ -6,7 +6,7 @@ import cl.duoc.ferremasapp.model.HistorialPrecio;
 import cl.duoc.ferremasapp.model.Producto;
 import cl.duoc.ferremasapp.model.Stock;
 import cl.duoc.ferremasapp.service.HistorialPrecioService;
-import cl.duoc.ferremasapp.service.ProductoService;
+import cl.duoc.ferremasapp.service.ProductoServ;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

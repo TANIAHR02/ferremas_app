@@ -1,6 +1,8 @@
 package cl.duoc.ferremasapp.dto;
 
 import java.math.BigDecimal;
+import cl.duoc.ferremasapp.DTO.precioDTO;
+
 
 public class precioDTO {
     private Long id;
