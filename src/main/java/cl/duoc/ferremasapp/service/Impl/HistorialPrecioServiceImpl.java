@@ -1,4 +1,4 @@
-package cl.duoc.ferremasapp.repository.Impl;
+package cl.duoc.ferremasapp.service.Impl;
 
 import cl.duoc.ferremasapp.model.HistorialPrecio;
 import cl.duoc.ferremasapp.model.Producto;

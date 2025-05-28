@@ -1,0 +1,16 @@
+h2 {
+    color: #333;
+}
+
+.producto {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 1em;
+    background: #fff;
+}
+
+.producto img {
+    max-width: 100%;
+    height: auto;
+}

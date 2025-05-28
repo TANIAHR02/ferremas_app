@@ -5,19 +5,12 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductoService {
-    List<Producto> findAll();
-    
-    Optional<Producto> findById(Integer id);
-    
-    Optional<Producto> findByCodigo(String codigo);
-    
-    List<Producto> findByNombre(String nombre);
-    
-    List<Producto> findByCategoria(String categoriaNombre);
-    
-    List<Producto> findByStockBajo(int cantidadMinima);
-    
-    Producto save(Producto producto);
-    
-    void deleteById(Integer id);
+    Producto registrarProducto(Producto p);
+    Optional<Producto> buscarPorId(Long id);
+    List<Producto> listarProductos();
+    Producto actualizarProducto(Producto p);
+    void eliminarProducto(Long id);
+    List<Producto> buscarPorNombre(String nombre);
+    List<Producto> buscarPorCategoria(String categoria);
+    List<Producto> buscarPorStockMenorA(int cantidad);
 }

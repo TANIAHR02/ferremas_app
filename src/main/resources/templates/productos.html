@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Catálogo</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="/css/productos.css">
+</head>
+<body>
+<img src="/img/banner.jpg" alt="Banner FERREMAS">
+<h2>Catálogo de Productos</h2>
+<div th:each="producto : ${productos}" class="producto">
+    <h3 th:text="${producto.nombre}">Nombre</h3>
+    <p th:text="${producto.descripcion}">Descripción</p>
+</div>
+</body>
+</html>

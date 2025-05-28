@@ -1,0 +1,17 @@
+h2 {
+    color: #FF5733;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #28A745;
+}
