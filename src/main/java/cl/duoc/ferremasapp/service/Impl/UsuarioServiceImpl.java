@@ -1,13 +1,14 @@
-package cl.duoc.ferremasapp.service.impl;
+package cl.duoc.ferremasapp.service.Impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import cl.duoc.ferremasapp.model.Usuario;
 import cl.duoc.ferremasapp.repository.UsuarioRepository;
 import cl.duoc.ferremasapp.service.UsuarioService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -42,8 +43,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public Optional<Usuario> buscarPorEmail(String email) {
-        return usuarioRepository.findAll().stream()
-                .filter(u -> u.getEmail().equalsIgnoreCase(email))
-                .findFirst();
+        return usuarioRepository.findByEmailIgnoreCase(email);
     }
 }

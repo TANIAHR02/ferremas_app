@@ -1,4 +1,4 @@
-package cl.duoc.ferremasapp.service.impl;
+package cl.duoc.ferremasapp.service.Impl;
 
 import cl.duoc.ferremasapp.model.Producto;
 import cl.duoc.ferremasapp.repository.ProductoRepository;

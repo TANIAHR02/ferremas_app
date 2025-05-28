@@ -1,7 +1,8 @@
 package cl.duoc.ferremasapp.model;
 
-import javax.persistence.*;
 import lombok.Data;
+
+import javax.persistence.*;
 import java.util.List;
 
 @Data
@@ -10,14 +11,11 @@ import java.util.List;
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    
-    @Column(nullable = false, length = 50)
+    private Long id;
+
+    @Column(nullable = false, unique = true, length = 50)
     private String nombre;
-    
-    @Column(length = 255)
-    private String descripcion;
-    
+
     @OneToMany(mappedBy = "rol")
     private List<Usuario> usuarios;
 }
