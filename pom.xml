@@ -15,7 +15,7 @@
     <artifactId>ferremasapp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ferremasapp</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Proyecto para Distribuidora FERREMAS</description>
 
     <properties>
         <java.version>17</java.version>
@@ -23,13 +23,13 @@
 
     <dependencies>
 
-        <!-- Spring Boot Web -->
+        <!-- Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Spring Data JPA -->
+        <!-- JPA -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -42,13 +42,6 @@
             <version>8.0.30</version>
         </dependency>
 
-        <!-- Spring Boot DevTools -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-        </dependency> 
-
         <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -56,7 +49,7 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- Springdoc OpenAPI -->
+        <!-- Swagger/OpenAPI -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -69,18 +62,22 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!-- Spring Boot Starter Test -->
+        <!-- Spring Boot DevTools -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-         <dependency>
-         <groupId>org.springframework.boot</groupId>
-         <artifactId>spring-boot-starter-data-jpa</artifactId>
-     </dependency>
+
     </dependencies>
-   
+
     <build>
         <plugins>
             <plugin>

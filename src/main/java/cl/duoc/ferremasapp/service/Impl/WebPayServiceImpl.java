@@ -3,10 +3,10 @@ package cl.duoc.ferremasapp.service.Impl;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import cl.duoc.ferremasapp.Integraciones.WebPayService;
 import cl.duoc.ferremasapp.config.WebPayConfig;
 import cl.duoc.ferremasapp.dto.PagoDTO;
 import cl.duoc.ferremasapp.dto.PagoResponseDTO;
+import cl.duoc.ferremasapp.service.WebPayService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
