@@ -3,7 +3,7 @@ FerremasApp es una aplicación integral desarrollada en Java + Spring Boot, con 
 
 Instrucciones de Ejecución
 Clona este repositorio:
-git clone https://github.com/usuario/ferremasapp.git
+git clone https://github.com/TANIAHR02/ferremas_app.git
 cd ferremasapp
 
 Configura la base de datos MySQL en XAMPP:
