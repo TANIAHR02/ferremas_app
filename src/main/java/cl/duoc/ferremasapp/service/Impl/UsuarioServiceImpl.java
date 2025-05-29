@@ -17,8 +17,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     @Override
-    public Usuario registrarUsuario(Usuario u) {
-        return usuarioRepository.save(u);
+    public Usuario registrarUsuario(Usuario usuario) {
+        return usuarioRepository.save(usuario);
     }
 
     @Override
@@ -32,17 +32,12 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario actualizarUsuario(Usuario u) {
-        return usuarioRepository.save(u);
+    public Usuario actualizarUsuario(Usuario usuario) {
+        return usuarioRepository.save(usuario);
     }
 
     @Override
     public void eliminarUsuario(Long id) {
         usuarioRepository.deleteById(id);
-    }
-
-    @Override
-    public Optional<Usuario> buscarPorEmail(String email) {
-        return usuarioRepository.findByEmailIgnoreCase(email);
     }
 }

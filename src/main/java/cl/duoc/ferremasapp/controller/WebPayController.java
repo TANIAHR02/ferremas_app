@@ -1,5 +1,6 @@
 package cl.duoc.ferremasapp.controller;
 
+import cl.duoc.ferremasapp.dto.PagoResponseDTO;
 import cl.duoc.ferremasapp.service.WebPayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,22 +13,22 @@ public class WebPayController {
     private WebPayService webPayService;
 
     @PostMapping("/iniciar")
-    public String iniciarPago(@RequestParam double monto) {
+    public PagoResponseDTO iniciarPago(@RequestParam double monto) {
         return webPayService.iniciarPago(monto);
     }
 
-    @PostMapping("/confirmar")
-    public String confirmarPago(@RequestParam String transaccionId) {
-        return webPayService.confirmarPago(transaccionId);
+    @PostMapping("/confirmar/{token}")
+    public PagoResponseDTO confirmarPago(@PathVariable String token) {
+        return webPayService.confirmarPago(token);
     }
 
-    @PostMapping("/cancelar")
-    public String cancelarPago(@RequestParam String transaccionId) {
-        return webPayService.cancelarPago(transaccionId);
+    @PostMapping("/estado/{token}")
+    public PagoResponseDTO estadoPago(@PathVariable String token) {
+        return webPayService.estadoPago(token);
     }
 
-    @GetMapping("/estado")
-    public String estadoPago(@RequestParam String transaccionId) {
-        return webPayService.estadoPago(transaccionId);
+    @PostMapping("/cancelar/{token}")
+    public PagoResponseDTO cancelarPago(@PathVariable String token) {
+        return webPayService.cancelarPago(token);
     }
 }

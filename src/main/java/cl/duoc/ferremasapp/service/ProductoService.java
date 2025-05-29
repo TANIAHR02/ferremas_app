@@ -8,7 +8,8 @@ import cl.duoc.ferremasapp.model.Producto;
 public interface ProductoService {
     Producto registrarProducto(Producto producto);
     Optional<Producto> buscarPorId(Long id);
-    List<Producto> listarProductos();
+    Optional<Producto> buscarPorCodigo(String codigo); // Agregado
+    List<Producto> listarProductos();  // Este es como findAll()
     Producto actualizarProducto(Producto producto);
     void eliminarProducto(Long id);
 }

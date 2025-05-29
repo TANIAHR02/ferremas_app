@@ -6,7 +6,5 @@ import lombok.Data;
 public class PagoDTO {
     private Long pedidoId;
     private double monto;
-    private String metodoPago;
-    private String estado;
-    private String transaccionId;
+    private String metodoPago; // DEBITO, CREDITO, TRANSFERENCIA
 }

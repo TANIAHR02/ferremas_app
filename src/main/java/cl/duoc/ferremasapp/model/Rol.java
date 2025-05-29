@@ -17,7 +17,7 @@ import lombok.Data;
 public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long  id;
 
     @Column(nullable = false, unique = true, length = 50)
     private String nombre;

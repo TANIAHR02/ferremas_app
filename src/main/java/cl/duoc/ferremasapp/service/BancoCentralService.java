@@ -11,3 +11,4 @@ public interface BancoCentralService {
     BigDecimal convertirMonto(BigDecimal monto, BigDecimal tasaCambio);
     DivisaDTO obtenerTasaDeCambio(String codigoMoneda);
 }
+

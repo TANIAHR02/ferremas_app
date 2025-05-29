@@ -1,9 +1,12 @@
 package cl.duoc.ferremasapp.dto;
 
+import java.math.BigDecimal;
+
 import lombok.Data;
 
 @Data
 public class PrecioDTO {
-    private Long productoId;
-    private double precio;
+    private BigDecimal precio;
+    private String fechaInicio;
+    private String fechaFin;
 }

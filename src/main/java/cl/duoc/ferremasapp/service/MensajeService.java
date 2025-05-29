@@ -1,10 +1,11 @@
 package cl.duoc.ferremasapp.service;
 
-import cl.duoc.ferremasapp.model.Mensaje;
 import java.util.List;
 
+import cl.duoc.ferremasapp.model.Mensaje;
+
 public interface MensajeService {
-    Mensaje enviarMensaje(Mensaje m);
-    List<Mensaje> listarMensajesPorDestinatario(Long id);
-    List<Mensaje> listarMensajesPorRemitente(Long id);
+    Mensaje enviarMensaje(Mensaje mensaje);
+    List<Mensaje> listarMensajesPorDestinatario(Long destinatarioId);
+    List<Mensaje> listarMensajesPorRemitente(Long remitenteId);
 }

@@ -51,8 +51,8 @@ public class Producto {
     private List<HistorialPrecio> historialPrecios;
     
     @OneToMany(mappedBy = "producto")
-    private List<Stock> stockItems;
-    
+    private List<Stock> stock;  // Renombrado para coincidir con el método esperado getStock()
+
     @PrePersist
     public void prePersist() {
         fechaCreacion = LocalDateTime.now();
