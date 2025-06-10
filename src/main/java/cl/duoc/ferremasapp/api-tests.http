@@ -1,0 +1,175 @@
+### ===============================================
+### PRUEBAS API FERRETERÍA - SPRING BOOT (Puerto 8080)
+### ===============================================
+
+### Variables globales
+@baseUrl = http://localhost:8080/api
+@contentType = application/json
+
+### ===============================================
+### PRODUCTOS - PRUEBAS BÁSICAS
+### ===============================================
+
+### 1. Obtener todos los productos
+GET {{baseUrl}}/productos
+Accept: {{contentType}}
+
+###
+
+### 2. Obtener producto por ID específico (prueba con ID 1)
+GET {{baseUrl}}/productos/1
+Accept: {{contentType}}
+
+###
+
+### 3. Obtener producto por ID específico (prueba con ID 5)
+GET {{baseUrl}}/productos/5
+Accept: {{contentType}}
+
+###
+
+### 4. Obtener producto por ID específico (prueba con ID 10)
+GET {{baseUrl}}/productos/10
+Accept: {{contentType}}
+
+###
+
+### ===============================================
+### PRODUCTOS - OPERACIONES CRUD
+### ===============================================
+
+### 5. Crear nuevo producto
+POST {{baseUrl}}/productos
+Content-Type: {{contentType}}
+
+{
+  "codigo": "TEST001",
+  "nombre": "Martillo de Prueba",
+  "descripcion": "Producto de prueba desde VS Code",
+  "categoria_id": 1,
+  "marca_id": 1
+}
+
+###
+
+### 6. Actualizar producto existente (cambiar por ID real)
+PUT {{baseUrl}}/productos/1
+Content-Type: {{contentType}}
+
+{
+  "codigo": "MAR001",
+  "nombre": "Martillo de Garra 16oz - ACTUALIZADO",
+  "descripcion": "Martillo actualizado desde VS Code",
+  "categoria_id": 1,
+  "marca_id": 1
+}
+
+###
+
+### 7. Eliminar producto 
+DELETE {{baseUrl}}/productos/41
+Accept: {{contentType}}
+
+###
+
+### ===============================================
+### CATEGORÍAS - PRUEBAS
+### ===============================================
+
+### 8. Obtener todas las categorías
+GET {{baseUrl}}/categorias
+Accept: {{contentType}}
+
+###
+
+### 9. Obtener categoría por ID
+GET {{baseUrl}}/categorias/1
+Accept: {{contentType}}
+
+###
+
+### ===============================================
+### MARCAS - PRUEBAS  
+### ===============================================
+
+### 10. Obtener todas las marcas
+GET {{baseUrl}}/marcas
+Accept: {{contentType}}
+
+###
+
+### 11. Obtener marca por ID
+GET {{baseUrl}}/marcas/1
+Accept: {{contentType}}
+
+###
+
+### ===============================================
+### OTROS ENDPOINTS DISPONIBLES
+### ===============================================
+
+### 12. Obtener todos los pedidos
+GET {{baseUrl}}/pedidos
+Accept: {{contentType}}
+
+###
+
+### 13. Obtener pedido por ID
+GET {{baseUrl}}/pedidos/1
+Accept: {{contentType}}
+
+###
+
+### 14. Obtener todos los pagos
+GET {{baseUrl}}/pagos
+Accept: {{contentType}}
+
+###
+
+### 15. Obtener usuarios
+GET {{baseUrl}}/usuarios/1
+Accept: {{contentType}}
+
+###
+
+### ===============================================
+### PRUEBAS DE BÚSQUEDA Y FILTROS 
+### ===============================================
+
+### 16. Buscar productos por código 
+GET {{baseUrl}}/productos?codigo=MAR001
+Accept: {{contentType}}
+
+###
+
+### 17. Filtrar productos por categoría 
+GET {{baseUrl}}/productos?categoria_id=1
+Accept: {{contentType}}
+
+###
+
+### 18. Filtrar productos por marca 
+GET {{baseUrl}}/productos?marca_id=1
+Accept: {{contentType}}
+
+###
+
+### ===============================================
+### PRUEBAS DE ERROR - CASOS LÍMITE
+### ===============================================
+
+### 19. Producto que no existe (debería devolver 404)
+GET {{baseUrl}}/productos/9999
+Accept: {{contentType}}
+
+###
+
+### 20. Categoría que no existe
+GET {{baseUrl}}/categorias/999
+Accept: {{contentType}}
+
+###
+
+### 21. Marca que no existe
+GET {{baseUrl}}/marcas/999
+Accept: {{contentType}}

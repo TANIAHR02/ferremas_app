@@ -1,10 +1,11 @@
-package cl.duoc.ferremasapp.service.Impl;
+package cl.duoc.ferremasapp.service.impl;
 
 import cl.duoc.ferremasapp.model.Producto;
 import cl.duoc.ferremasapp.repository.ProductoRepository;
 import cl.duoc.ferremasapp.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -15,22 +16,17 @@ public class ProductoServiceImpl implements ProductoService {
     private ProductoRepository productoRepository;
 
     @Override
-    public Producto registrarProducto(Producto producto) {
-        return productoRepository.save(producto);
-    }
-
-    @Override
-    public Optional<Producto> buscarPorId(Long id) {
-        return productoRepository.findById(id);
-    }
-
-    @Override
     public List<Producto> listarProductos() {
         return productoRepository.findAll();
     }
 
     @Override
-    public Producto actualizarProducto(Producto producto) {
+    public Optional<Producto> buscarProductoPorId(Long id) {
+        return productoRepository.findById(id);
+    }
+
+    @Override
+    public Producto guardarProducto(Producto producto) {
         return productoRepository.save(producto);
     }
 

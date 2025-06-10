@@ -1,10 +1,11 @@
-package cl.duoc.ferremasapp.service.Impl;
+package cl.duoc.ferremasapp.service.impl;
 
 import cl.duoc.ferremasapp.model.Mensaje;
 import cl.duoc.ferremasapp.repository.MensajeRepository;
 import cl.duoc.ferremasapp.service.MensajeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -14,17 +15,12 @@ public class MensajeServiceImpl implements MensajeService {
     private MensajeRepository mensajeRepository;
 
     @Override
-    public Mensaje enviarMensaje(Mensaje mensaje) {
+    public List<Mensaje> listarMensajes() {
+        return mensajeRepository.findAll();
+    }
+
+    @Override
+    public Mensaje guardarMensaje(Mensaje mensaje) {
         return mensajeRepository.save(mensaje);
-    }
-
-    @Override
-    public List<Mensaje> listarMensajesPorDestinatario(Long destinatarioId) {
-        return mensajeRepository.findByDestinatarioId(destinatarioId);
-    }
-
-    @Override
-    public List<Mensaje> listarMensajesPorRemitente(Long remitenteId) {
-        return mensajeRepository.findByRemitenteId(remitenteId);
     }
 }

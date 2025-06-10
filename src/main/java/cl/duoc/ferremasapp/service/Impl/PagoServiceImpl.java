@@ -22,7 +22,7 @@ public class PagoServiceImpl implements PagoService {
     }
 
     @Override
-    public Optional<Pago> buscarPorId(Long id) {
+    public Optional<Pago> buscarPorId(Integer id) {
         return pagoRepository.findById(id);
     }
 

@@ -1,5 +1,6 @@
 package cl.duoc.ferremasapp.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -19,13 +20,14 @@ import lombok.Data;
 public class Pago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 
-    private double monto;
+    private BigDecimal monto;
+
 
     @Enumerated(EnumType.STRING)
     private MetodoPago metodoPago;

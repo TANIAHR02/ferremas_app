@@ -31,7 +31,7 @@ public class PedidoController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Obtener pedido por ID")
-    public ResponseEntity<Pedido> obtenerPorId(@PathVariable Long id) {
+    public ResponseEntity<Pedido> obtenerPorId(@PathVariable Integer id) {
         return pedidoService.buscarPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -45,14 +45,14 @@ public class PedidoController {
 
     @PutMapping("/{id}")
     @Operation(summary = "Actualizar pedido por ID")
-    public ResponseEntity<Pedido> actualizar(@PathVariable Long id, @RequestBody Pedido pedido) {
+    public ResponseEntity<Pedido> actualizar(@PathVariable Integer id, @RequestBody Pedido pedido) {
         pedido.setId(id);
         return ResponseEntity.ok(pedidoService.actualizarPedido(pedido));
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Eliminar pedido por ID")
-    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminar(@PathVariable Integer id) {
         pedidoService.eliminarPedido(id);
         return ResponseEntity.noContent().build();
     }

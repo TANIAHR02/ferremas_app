@@ -31,7 +31,7 @@ public class PagoController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Obtener pago por ID")
-    public ResponseEntity<Pago> obtenerPorId(@PathVariable Long id) {
+    public ResponseEntity<Pago> obtenerPorId(@PathVariable Integer id) {
         return pagoService.buscarPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

@@ -22,7 +22,7 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public Optional<Pedido> buscarPorId(Long id) {
+    public Optional<Pedido> buscarPorId(Integer id) {
         return pedidoRepository.findById(id);
     }
 
@@ -37,7 +37,7 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public void eliminarPedido(Long id) {
+    public void eliminarPedido(Integer id) {
         pedidoRepository.deleteById(id);
     }
 }

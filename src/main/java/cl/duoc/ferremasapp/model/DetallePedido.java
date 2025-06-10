@@ -17,7 +17,7 @@ public class DetallePedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "pedido_id", nullable = false)
@@ -33,16 +33,16 @@ public class DetallePedido {
     @Column(name = "precio_unitario", nullable = false)
     private BigDecimal precioUnitario;
 
-    @Column(name = "sub_total", nullable = false)
+    @Column(name = "subtotal", nullable = false)
     private BigDecimal subTotal;
 
     // Getters y setters
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
