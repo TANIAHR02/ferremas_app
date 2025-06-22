@@ -5,8 +5,6 @@ import cl.duoc.ferremasapp.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -15,7 +13,7 @@ public class AuthController {
     private UsuarioService usuarioService;
 
     @PostMapping("/login")
-    public Optional<Usuario> login(@RequestBody Usuario usuario) {
-        return usuarioService.buscarPorId(usuario.getId());
+    public Usuario login(@RequestBody Usuario usuario) {
+        return usuarioService.buscarPorEmail(usuario.getEmail());
     }
 }

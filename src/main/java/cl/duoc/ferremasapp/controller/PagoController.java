@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/pagos")
@@ -31,7 +30,7 @@ public class PagoController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Obtener pago por ID")
-    public ResponseEntity<Pago> obtenerPorId(@PathVariable Integer id) {
+    public ResponseEntity<Pago> buscarPorId(@PathVariable Integer id) {
         return pagoService.buscarPorId(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface PagoService {
     Pago registrarPago(Pago p);
-    Optional<Pago> buscarPorId(Long id);
+    Optional<Pago> buscarPorId(Integer id);
     List<Pago> listarPagos();
 }

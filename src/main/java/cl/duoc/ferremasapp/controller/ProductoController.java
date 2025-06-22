@@ -21,7 +21,7 @@ public class ProductoController {
 
     @PostMapping
     public Producto agregarProducto(@RequestBody Producto producto) {
-        return productoService.guardarProducto(producto);
+        return productoService.registrarProducto(producto);
     }
 
     @DeleteMapping("/{id}")

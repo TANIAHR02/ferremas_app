@@ -15,38 +15,36 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    // @Override
-    // public Optional<Usuario> buscarPorId(Long id) {
-    //     return usuarioRepository.findById(id);
-    // }
+    @Override
+    public Optional<Usuario> buscarPorId(Integer id) {
+        return usuarioRepository.findById(id);
+    }
 
     @Override
     public Usuario registrarUsuario(Usuario usuario) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'registrarUsuario'");
+        return usuarioRepository.save(usuario);
     }
 
     @Override
     public Usuario buscarPorEmail(String email) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorEmail'");
+        return usuarioRepository.findByEmail(email);
     }
 
     @Override
     public List<Usuario> listarUsuarios() {
-        // TODO Auto-generated method stub
+        //
         throw new UnsupportedOperationException("Unimplemented method 'listarUsuarios'");
     }
 
     @Override
     public Usuario actualizarUsuario(Usuario usuario) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'actualizarUsuario'");
     }
 
     @Override
     public void eliminarUsuario(Integer id) {
-        // TODO Auto-generated method stub
+    
         throw new UnsupportedOperationException("Unimplemented method 'eliminarUsuario'");
     }
 

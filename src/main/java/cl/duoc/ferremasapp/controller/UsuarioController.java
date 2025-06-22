@@ -15,7 +15,7 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping("/{id}")
-    public Optional<Usuario> obtenerUsuario(@PathVariable Long id) {
+    public Optional<Usuario> obtenerUsuario(@PathVariable Integer id) {
         return usuarioService.buscarPorId(id);
     }
 }

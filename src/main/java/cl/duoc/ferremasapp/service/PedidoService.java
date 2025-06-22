@@ -6,8 +6,8 @@ import java.util.Optional;
 
 public interface PedidoService {
     Pedido crearPedido(Pedido p);
-    Optional<Pedido> buscarPorId(Long id);
+    Optional<Pedido> buscarPorId(Integer id);
     List<Pedido> listarPedidos();
     Pedido actualizarPedido(Pedido p);
-    void eliminarPedido(Long id);
+    void eliminarPedido(Integer id);
 }

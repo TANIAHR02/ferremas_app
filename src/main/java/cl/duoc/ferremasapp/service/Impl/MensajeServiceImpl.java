@@ -1,4 +1,4 @@
-package cl.duoc.ferremasapp.service.impl;
+package cl.duoc.ferremasapp.service.Impl;
 
 import cl.duoc.ferremasapp.model.Mensaje;
 import cl.duoc.ferremasapp.repository.MensajeRepository;
@@ -15,12 +15,19 @@ public class MensajeServiceImpl implements MensajeService {
     private MensajeRepository mensajeRepository;
 
     @Override
-    public List<Mensaje> listarMensajes() {
+    public Mensaje enviarMensaje(Mensaje mensaje) {
+        return mensajeRepository.save(mensaje);
+    }
+
+    @Override
+    public List<Mensaje> listarMensajesPorDestinatario(Long destinatarioId) {
+        
         return mensajeRepository.findAll();
     }
 
     @Override
-    public Mensaje guardarMensaje(Mensaje mensaje) {
-        return mensajeRepository.save(mensaje);
+    public List<Mensaje> listarMensajesPorRemitente(Long remitenteId) {
+        
+        return mensajeRepository.findAll();
     }
 }

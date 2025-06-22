@@ -1,4 +1,4 @@
-package cl.duoc.ferremasapp.service.impl;
+package cl.duoc.ferremasapp.service.Impl;
 
 import cl.duoc.ferremasapp.model.Producto;
 import cl.duoc.ferremasapp.repository.ProductoRepository;
@@ -16,22 +16,35 @@ public class ProductoServiceImpl implements ProductoService {
     private ProductoRepository productoRepository;
 
     @Override
+    public Producto registrarProducto(Producto producto) {
+        return productoRepository.save(producto);
+    }
+
+    @Override
+    public Optional<Producto> buscarPorId(Integer id) {
+        return productoRepository.findById(id);
+    }
+
+    @Override
+    public Optional<Producto> buscarPorCodigo(String codigo) {
+    
+        return productoRepository.findAll().stream()
+                .filter(p -> p.getCodigo().equals(codigo))
+                .findFirst();
+    }
+
+    @Override
     public List<Producto> listarProductos() {
         return productoRepository.findAll();
     }
 
     @Override
-    public Optional<Producto> buscarProductoPorId(Long id) {
-        return productoRepository.findById(id);
-    }
-
-    @Override
-    public Producto guardarProducto(Producto producto) {
+    public Producto actualizarProducto(Producto producto) {
         return productoRepository.save(producto);
     }
 
     @Override
-    public void eliminarProducto(Long id) {
+    public void eliminarProducto(Integer id) {
         productoRepository.deleteById(id);
     }
 }
