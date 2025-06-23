@@ -1,18 +1,95 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Ferremas</title>
     <link rel="stylesheet" href="/css/estilo.css">
     <link rel="stylesheet" href="/css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<img src="/img/logo.png" alt="Logo FERREMAS">
-<h2>Iniciar Sesión</h2>
-<form action="/login" method="post">
-    <input type="text" name="username" placeholder="Correo electrónico" required/>
-    <input type="password" name="password" placeholder="Contraseña" required/>
-    <button type="submit">Iniciar</button>
-</form>
-<a href="/registro">Registrarse</a>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav-brand">
+                    <img src="/img/logo.png" alt="Ferremas Logo">
+                    <span>Ferremas</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="/productos" class="nav-link">Productos</a></li>
+                    <li><a href="/carrito" class="nav-link">Carrito</a></li>
+                    <li><a href="/quienes-somos" class="nav-link">¿Quiénes Somos?</a></li>
+                    <li><a href="/login" class="nav-link active">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="container-sm">
+            <div class="card" style="margin-top: 4rem;">
+                <div class="card-header text-center">
+                    <img src="/img/logo.png" alt="Ferremas Logo" style="height: 60px; margin-bottom: 1rem;">
+                    <h2>Bienvenido de vuelta</h2>
+                    <p class="text-muted">Inicia sesión en tu cuenta para continuar</p>
+                </div>
+                
+                <div class="card-body">
+                    <form action="/login" method="post" class="login-form">
+                        <div class="form-group">
+                            <label for="username" class="form-label">Correo electrónico</label>
+                            <input 
+                                type="email" 
+                                id="username" 
+                                name="username" 
+                                class="form-input" 
+                                placeholder="tu@email.com" 
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                class="form-input" 
+                                placeholder="••••••••" 
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                                Iniciar Sesión
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="card-footer text-center">
+                    <p class="mb-0">
+                        ¿No tienes una cuenta? 
+                        <a href="/registro" class="text-primary" style="text-decoration: none; font-weight: 500;">
+                            Regístrate aquí
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem; padding: 2rem 0; background: var(--gray-100); text-align: center;">
+        <div class="container">
+            <p class="text-muted mb-0">
+                © 2024 Ferremas. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

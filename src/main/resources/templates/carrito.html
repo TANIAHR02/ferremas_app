@@ -1,18 +1,261 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
-    <title>Carrito</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Ferremas</title>
     <link rel="stylesheet" href="/css/estilo.css">
     <link rel="stylesheet" href="/css/carrito.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<h2>Carrito de Compras</h2>
-<table>
-    <tr>
-        <th>Producto</th><th>Cantidad</th><th>Precio</th>
-    </tr>
-    <!-- Aquí se iterarán los productos del carrito -->
-</table>
-<button>Finalizar Compra</button>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav-brand">
+                    <img src="/img/logo.png" alt="Ferremas Logo">
+                    <span>Ferremas</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="/productos" class="nav-link">Productos</a></li>
+                    <li><a href="/carrito" class="nav-link active">Carrito</a></li>
+                    <li><a href="/quienes-somos" class="nav-link">¿Quiénes Somos?</a></li>
+                    <li><a href="/perfil" class="nav-link">Mi Cuenta</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container" style="padding: 3rem 0;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <!-- Page Header -->
+            <div style="margin-bottom: 2rem;">
+                <h1 style="margin-bottom: 0.5rem;">Carrito de Compras</h1>
+                <p class="text-muted">Revisa tus productos antes de finalizar la compra</p>
+            </div>
+
+            <div class="grid grid-cols-1 grid-cols-3" style="gap: 2rem;">
+                <!-- Cart Items -->
+                <div style="grid-column: span 2;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 style="margin: 0;">Productos (3)</h3>
+                        </div>
+                        <div class="card-body" style="padding: 0;">
+                            <!-- Cart Item 1 -->
+                            <div style="display: flex; padding: 1.5rem; border-bottom: 1px solid var(--gray-200); align-items: center;">
+                                <img src="https://via.placeholder.com/80x80/2563eb/ffffff?text=Martillo" alt="Martillo" style="width: 80px; height: 80px; object-fit: cover; border-radius: 0.5rem; margin-right: 1rem;">
+                                <div style="flex: 1;">
+                                    <h4 style="margin: 0 0 0.5rem 0;">Martillo Profesional</h4>
+                                    <p class="text-muted" style="margin: 0; font-size: 0.875rem;">Código: MART-001</p>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 1rem;">
+                                    <div style="display: flex; align-items: center; border: 1px solid var(--gray-300); border-radius: 0.5rem;">
+                                        <button style="padding: 0.5rem 1rem; border: none; background: none; cursor: pointer;">-</button>
+                                        <span style="padding: 0.5rem 1rem; min-width: 40px; text-align: center;">1</span>
+                                        <button style="padding: 0.5rem 1rem; border: none; background: none; cursor: pointer;">+</button>
+                                    </div>
+                                    <span style="font-weight: 600; color: var(--primary-color); min-width: 80px; text-align: right;">$15.990</span>
+                                    <button style="background: none; border: none; color: var(--danger-color); cursor: pointer; padding: 0.5rem;">🗑️</button>
+                                </div>
+                            </div>
+
+                            <!-- Cart Item 2 -->
+                            <div style="display: flex; padding: 1.5rem; border-bottom: 1px solid var(--gray-200); align-items: center;">
+                                <img src="https://via.placeholder.com/80x80/f59e0b/ffffff?text=Destornillador" alt="Destornillador" style="width: 80px; height: 80px; object-fit: cover; border-radius: 0.5rem; margin-right: 1rem;">
+                                <div style="flex: 1;">
+                                    <h4 style="margin: 0 0 0.5rem 0;">Destornillador Phillips</h4>
+                                    <p class="text-muted" style="margin: 0; font-size: 0.875rem;">Código: DEST-002</p>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 1rem;">
+                                    <div style="display: flex; align-items: center; border: 1px solid var(--gray-300); border-radius: 0.5rem;">
+                                        <button style="padding: 0.5rem 1rem; border: none; background: none; cursor: pointer;">-</button>
+                                        <span style="padding: 0.5rem 1rem; min-width: 40px; text-align: center;">2</span>
+                                        <button style="padding: 0.5rem 1rem; border: none; background: none; cursor: pointer;">+</button>
+                                    </div>
+                                    <span style="font-weight: 600; color: var(--primary-color); min-width: 80px; text-align: right;">$17.000</span>
+                                    <button style="background: none; border: none; color: var(--danger-color); cursor: pointer; padding: 0.5rem;">🗑️</button>
+                                </div>
+                            </div>
+
+                            <!-- Cart Item 3 -->
+                            <div style="display: flex; padding: 1.5rem; align-items: center;">
+                                <img src="https://via.placeholder.com/80x80/10b981/ffffff?text=Sierra" alt="Sierra" style="width: 80px; height: 80px; object-fit: cover; border-radius: 0.5rem; margin-right: 1rem;">
+                                <div style="flex: 1;">
+                                    <h4 style="margin: 0 0 0.5rem 0;">Sierra Circular</h4>
+                                    <p class="text-muted" style="margin: 0; font-size: 0.875rem;">Código: SIER-003</p>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 1rem;">
+                                    <div style="display: flex; align-items: center; border: 1px solid var(--gray-300); border-radius: 0.5rem;">
+                                        <button style="padding: 0.5rem 1rem; border: none; background: none; cursor: pointer;">-</button>
+                                        <span style="padding: 0.5rem 1rem; min-width: 40px; text-align: center;">1</span>
+                                        <button style="padding: 0.5rem 1rem; border: none; background: none; cursor: pointer;">+</button>
+                                    </div>
+                                    <span style="font-weight: 600; color: var(--primary-color); min-width: 80px; text-align: right;">$89.990</span>
+                                    <button style="background: none; border: none; color: var(--danger-color); cursor: pointer; padding: 0.5rem;">🗑️</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Continue Shopping -->
+                    <div style="margin-top: 2rem;">
+                        <a href="/productos" class="btn btn-secondary">
+                            ← Continuar comprando
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 style="margin: 0;">Resumen del pedido</h3>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <span>Subtotal (3 productos)</span>
+                                <span>$122.980</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <span>Envío</span>
+                                <span>$5.990</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <span>IVA (19%)</span>
+                                <span>$24.504</span>
+                            </div>
+                            <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--gray-300);">
+                            <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 1.125rem;">
+                                <span>Total</span>
+                                <span style="color: var(--primary-color);">$153.474</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-primary btn-lg" style="width: 100%;" onclick="procederAlPago()">
+                                Proceder al pago
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Shipping Info -->
+                    <div class="card" style="margin-top: 1rem;">
+                        <div class="card-header">
+                            <h4 style="margin: 0;">Información de envío</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 1rem;">
+                                📍 Envío a domicilio en 2-3 días hábiles
+                            </p>
+                            <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 1rem;">
+                                🚚 Envío gratuito en compras sobre $50.000
+                            </p>
+                            <p class="text-muted" style="font-size: 0.875rem; margin: 0;">
+                                💳 Pago seguro con WebPay
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Coupon -->
+                    <div class="card" style="margin-top: 1rem;">
+                        <div class="card-header">
+                            <h4 style="margin: 0;">Cupón de descuento</h4>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: flex; gap: 0.5rem;">
+                                <input type="text" placeholder="Código de descuento" class="form-input" style="flex: 1;">
+                                <button class="btn btn-secondary">Aplicar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: var(--gray-100); padding: 3rem 0; margin-top: 4rem;">
+        <div class="container">
+            <div class="grid grid-cols-4" style="gap: 2rem;">
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Ferremas</h5>
+                    <p class="text-muted" style="font-size: 0.875rem;">Tu tienda de confianza para herramientas y materiales de construcción.</p>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Productos</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Herramientas</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Materiales</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Electricidad</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Plomería</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Servicios</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Envío a domicilio</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Asesoría técnica</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Garantía extendida</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Financiamiento</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Contacto</h5>
+                    <p class="text-muted" style="font-size: 0.875rem;">
+                        📞 +56 2 2345 6789<br>
+                        📧 info@ferremas.cl<br>
+                        📍 Av. Providencia 1234, Santiago
+                    </p>
+                </div>
+            </div>
+            <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--gray-300);">
+            <div style="text-align: center;">
+                <p class="text-muted mb-0">
+                    © 2024 Ferremas. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Función para proceder al pago
+        function procederAlPago() {
+            // Aquí podrías validar que el carrito no esté vacío
+            // y guardar los datos del carrito en sessionStorage o localStorage
+            
+            // Guardar datos del carrito para la página de pago
+            const cartData = {
+                subtotal: 122980,
+                shipping: 5990,
+                tax: 24504,
+                total: 153474,
+                items: [
+                    { name: 'Martillo Profesional', price: 15990, quantity: 1 },
+                    { name: 'Destornillador Phillips', price: 8500, quantity: 2 },
+                    { name: 'Sierra Circular', price: 89990, quantity: 1 }
+                ]
+            };
+            
+            // Guardar en sessionStorage para usar en la página de pago
+            sessionStorage.setItem('cartData', JSON.stringify(cartData));
+            
+            // Redirigir a la página de tipos de pago
+            window.location.href = '/tipos-pago';
+        }
+
+        // Función para actualizar cantidades (ejemplo)
+        function updateQuantity(itemId, change) {
+            // Aquí implementarías la lógica para actualizar cantidades
+            console.log('Actualizando cantidad del item:', itemId, 'cambio:', change);
+        }
+
+        // Función para eliminar item del carrito
+        function removeItem(itemId) {
+            // Aquí implementarías la lógica para eliminar items
+            console.log('Eliminando item:', itemId);
+        }
+    </script>
 </body>
 </html>

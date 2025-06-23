@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferremas - Tu tienda de herramientas y materiales</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav-brand">
+                    <img src="/img/logo.png" alt="Ferremas Logo">
+                    <span>Ferremas</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="/productos" class="nav-link">Productos</a></li>
+                    <li><a href="/carrito" class="nav-link">Carrito</a></li>
+                    <li><a href="/quienes-somos" class="nav-link">¿Quiénes Somos?</a></li>
+                    <li><a href="/login" class="nav-link">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section style="background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: white; padding: 6rem 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div>
+                    <h1 style="font-size: 3.5rem; margin-bottom: 1.5rem; line-height: 1.1;">
+                        Tu tienda de confianza para herramientas y materiales
+                    </h1>
+                    <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;">
+                        Encuentra las mejores herramientas profesionales, materiales de construcción y todo lo que necesitas para tus proyectos.
+                    </p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="/productos" class="btn btn-secondary btn-lg">
+                            Ver productos
+                        </a>
+                        <a href="/registro" class="btn btn-lg" style="background: var(--accent-color); color: white; text-decoration: none;">
+                            Registrarse
+                        </a>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="/img/banner.png" alt="Herramientas Ferremas" style="max-width: 100%; height: auto; border-radius: 1rem;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section style="padding: 4rem 0; background: var(--white);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="margin-bottom: 1rem;">¿Por qué elegir Ferremas?</h2>
+                <p class="text-muted" style="font-size: 1.125rem;">Ofrecemos la mejor calidad y servicio para profesionales y aficionados</p>
+            </div>
+            
+            <div class="grid grid-cols-3" style="gap: 2rem;">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div style="width: 60px; height: 60px; background: var(--primary-color); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            🛠️
+                        </div>
+                        <h4 style="margin-bottom: 1rem;">Herramientas Profesionales</h4>
+                        <p class="text-muted">Amplio catálogo de herramientas de las mejores marcas para profesionales y aficionados.</p>
+                    </div>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div style="width: 60px; height: 60px; background: var(--accent-color); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            🚚
+                        </div>
+                        <h4 style="margin-bottom: 1rem;">Envío Rápido</h4>
+                        <p class="text-muted">Envío a domicilio en 2-3 días hábiles. Gratis en compras sobre $50.000.</p>
+                    </div>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div style="width: 60px; height: 60px; background: var(--secondary-color); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            💳
+                        </div>
+                        <h4 style="margin-bottom: 1rem;">Pago Seguro</h4>
+                        <p class="text-muted">Pago seguro con WebPay y múltiples opciones de financiamiento disponibles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section style="padding: 4rem 0; background: var(--gray-50);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="margin-bottom: 1rem;">Productos Destacados</h2>
+                <p class="text-muted" style="font-size: 1.125rem;">Los productos más populares de nuestra tienda</p>
+            </div>
+            
+            <div class="grid grid-cols-4" style="gap: 2rem;">
+                <!-- Product 1 -->
+                <div class="card product-card">
+                    <div class="card-body" style="padding: 0;">
+                        <img src="https://via.placeholder.com/300x200/2563eb/ffffff?text=Martillo" alt="Martillo" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 1.5rem;">
+                            <h4 style="margin-bottom: 0.5rem;">Martillo Profesional</h4>
+                            <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 1rem;">Martillo de acero forjado con mango ergonómico</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 1.25rem; font-weight: 600; color: var(--primary-color);">$15.990</span>
+                                <span style="background: var(--accent-color); color: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">Popular</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">
+                                Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="card product-card">
+                    <div class="card-body" style="padding: 0;">
+                        <img src="https://via.placeholder.com/300x200/f59e0b/ffffff?text=Destornillador" alt="Destornillador" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 1.5rem;">
+                            <h4 style="margin-bottom: 0.5rem;">Destornillador Phillips</h4>
+                            <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 1rem;">Destornillador profesional con punta magnética</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 1.25rem; font-weight: 600; color: var(--primary-color);">$8.500</span>
+                                <span style="background: var(--accent-color); color: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">Oferta</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">
+                                Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="card product-card">
+                    <div class="card-body" style="padding: 0;">
+                        <img src="https://via.placeholder.com/300x200/10b981/ffffff?text=Sierra" alt="Sierra" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 1.5rem;">
+                            <h4 style="margin-bottom: 0.5rem;">Sierra Circular</h4>
+                            <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 1rem;">Sierra circular de 7 1/4" con motor de 15A</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 1.25rem; font-weight: 600; color: var(--primary-color);">$89.990</span>
+                                <span style="background: var(--accent-color); color: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">Nuevo</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">
+                                Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="card product-card">
+                    <div class="card-body" style="padding: 0;">
+                        <img src="https://via.placeholder.com/300x200/ef4444/ffffff?text=Taladro" alt="Taladro" style="width: 100%; height: 200px; object-fit: cover;">
+                        <div style="padding: 1.5rem;">
+                            <h4 style="margin-bottom: 0.5rem;">Taladro Inalámbrico</h4>
+                            <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 1rem;">Taladro de 20V con batería de litio incluida</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span style="font-size: 1.25rem; font-weight: 600; color: var(--primary-color);">$125.000</span>
+                                <span style="background: var(--accent-color); color: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">Top</span>
+                            </div>
+                            <button class="btn btn-primary" style="width: 100%;">
+                                Agregar al carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="/productos" class="btn btn-primary btn-lg">
+                    Ver todos los productos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--gray-100); padding: 3rem 0;">
+        <div class="container">
+            <div class="grid grid-cols-4" style="gap: 2rem;">
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Ferremas</h5>
+                    <p class="text-muted" style="font-size: 0.875rem;">Tu tienda de confianza para herramientas y materiales de construcción.</p>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Productos</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Herramientas</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Materiales</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Electricidad</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Plomería</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Servicios</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Envío a domicilio</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Asesoría técnica</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Garantía extendida</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Financiamiento</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Contacto</h5>
+                    <p class="text-muted" style="font-size: 0.875rem;">
+                        📞 +56 2 2345 6789<br>
+                        📧 info@ferremas.cl<br>
+                        📍 Av. Providencia 1234, Santiago
+                    </p>
+                </div>
+            </div>
+            <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--gray-300);">
+            <div style="text-align: center;">
+                <p class="text-muted mb-0">
+                    © 2024 Ferremas. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

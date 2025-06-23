@@ -5,6 +5,7 @@ public class PagoResponseDTO {
     private String url;
     private double monto;
     private String ordenCompra;
+    private String error;
 
     public String getToken() {
         return token;
@@ -36,5 +37,13 @@ public class PagoResponseDTO {
 
     public void setOrdenCompra(String ordenCompra) {
         this.ordenCompra = ordenCompra;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 }

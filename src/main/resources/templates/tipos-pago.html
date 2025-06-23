@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos de Pago - Ferremas</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav-brand">
+                    <img src="/img/logo.png" alt="Ferremas Logo">
+                    <span>Ferremas</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="/productos" class="nav-link">Productos</a></li>
+                    <li><a href="/carrito" class="nav-link">Carrito</a></li>
+                    <li><a href="/login" class="nav-link">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section style="background: var(--gray-50); padding: 1rem 0; border-bottom: 1px solid var(--gray-200);">
+        <div class="container">
+            <nav style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem;">
+                <a href="/" class="text-muted" style="text-decoration: none;">Inicio</a>
+                <span class="text-muted">/</span>
+                <a href="/carrito" class="text-muted" style="text-decoration: none;">Carrito</a>
+                <span class="text-muted">/</span>
+                <span style="color: var(--primary-color); font-weight: 500;">Métodos de Pago</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section style="padding: 3rem 0;">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <!-- Resumen del Pedido -->
+                <div class="card" style="margin-bottom: 2rem;">
+                    <div class="card-body">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--primary-color);">Resumen del Pedido</h3>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">$0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                            <span>Envío:</span>
+                            <span id="envio">$0</span>
+                        </div>
+                        <hr style="margin: 1rem 0;">
+                        <div style="display: flex; justify-content: space-between; font-weight: 600; font-size: 1.125rem;">
+                            <span>Total:</span>
+                            <span id="total">$0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Métodos de Pago -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--primary-color);">Selecciona tu método de pago</h3>
+                        
+                        <!-- Transbank WebPay -->
+                        <div class="payment-method" style="border: 2px solid var(--gray-200); border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; cursor: pointer;" onclick="selectPaymentMethod('webpay')">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <input type="radio" name="paymentMethod" value="webpay" id="webpay" style="width: 1.25rem; height: 1.25rem;">
+                                <div style="flex: 1;">
+                                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                        <img src="https://via.placeholder.com/60x40/1e40af/ffffff?text=WebPay" alt="WebPay" style="height: 40px;">
+                                        <div>
+                                            <h4 style="margin: 0; font-size: 1.125rem;">WebPay Plus</h4>
+                                            <p class="text-muted" style="margin: 0; font-size: 0.875rem;">Pago seguro con tarjeta de crédito, débito o transferencia</p>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                        <span style="background: var(--gray-100); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">💳 Tarjetas de Crédito</span>
+                                        <span style="background: var(--gray-100); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">🏦 Tarjetas de Débito</span>
+                                        <span style="background: var(--gray-100); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">💸 Transferencia</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Transferencia Bancaria -->
+                        <div class="payment-method" style="border: 2px solid var(--gray-200); border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; cursor: pointer;" onclick="selectPaymentMethod('transfer')">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <input type="radio" name="paymentMethod" value="transfer" id="transfer" style="width: 1.25rem; height: 1.25rem;">
+                                <div style="flex: 1;">
+                                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                        <img src="https://via.placeholder.com/60x40/10b981/ffffff?text=Banco" alt="Transferencia" style="height: 40px;">
+                                        <div>
+                                            <h4 style="margin: 0; font-size: 1.125rem;">Transferencia Bancaria</h4>
+                                            <p class="text-muted" style="margin: 0; font-size: 0.875rem;">Pago directo a nuestra cuenta bancaria</p>
+                                        </div>
+                                    </div>
+                                    <div style="background: var(--gray-50); padding: 1rem; border-radius: 0.5rem; font-size: 0.875rem;">
+                                        <p style="margin: 0 0 0.5rem 0;"><strong>Banco:</strong> Banco de Chile</p>
+                                        <p style="margin: 0 0 0.5rem 0;"><strong>Cuenta Corriente:</strong> 12345678</p>
+                                        <p style="margin: 0;"><strong>RUT:</strong> 76.123.456-7</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pago en Sucursal -->
+                        <div class="payment-method" style="border: 2px solid var(--gray-200); border-radius: 0.5rem; padding: 1.5rem; margin-bottom: 1rem; cursor: pointer;" onclick="selectPaymentMethod('store')">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <input type="radio" name="paymentMethod" value="store" id="store" style="width: 1.25rem; height: 1.25rem;">
+                                <div style="flex: 1;">
+                                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                        <img src="https://via.placeholder.com/60x40/f59e0b/ffffff?text=Tienda" alt="Tienda" style="height: 40px;">
+                                        <div>
+                                            <h4 style="margin: 0; font-size: 1.125rem;">Pago en Sucursal</h4>
+                                            <p class="text-muted" style="margin: 0; font-size: 0.875rem;">Retira y paga en cualquiera de nuestras sucursales</p>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                        <span style="background: var(--gray-100); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">🏪 15 Sucursales</span>
+                                        <span style="background: var(--gray-100); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">💰 Efectivo</span>
+                                        <span style="background: var(--gray-100); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">💳 Tarjetas</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botones de Acción -->
+                        <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                            <a href="/carrito" class="btn btn-secondary" style="flex: 1; text-align: center; text-decoration: none;">
+                                ← Volver al Carrito
+                            </a>
+                            <button class="btn btn-primary" style="flex: 2;" onclick="procesarPago()">
+                                Continuar con el Pago
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--gray-100); padding: 3rem 0; margin-top: 4rem;">
+        <div class="container">
+            <div class="grid grid-cols-4" style="gap: 2rem;">
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Ferremas</h5>
+                    <p class="text-muted" style="font-size: 0.875rem;">Tu tienda de confianza para herramientas y materiales de construcción.</p>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Productos</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Herramientas</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Materiales</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Electricidad</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Plomería</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Servicios</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Envío a domicilio</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Asesoría técnica</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Garantía extendida</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Financiamiento</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Contacto</h5>
+                    <p class="text-muted" style="font-size: 0.875rem;">
+                        📞 +56 2 2345 6789<br>
+                        📧 info@ferremas.cl<br>
+                        📍 Av. Providencia 1234, Santiago
+                    </p>
+                </div>
+            </div>
+            <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--gray-300);">
+            <div style="text-align: center;">
+                <p class="text-muted mb-0">
+                    © 2024 Ferremas. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simular datos del carrito (en producción vendrían del backend)
+        let cartData = {
+            subtotal: 125000,
+            shipping: 5000,
+            total: 130000
+        };
+
+        // Actualizar resumen del pedido
+        function updateOrderSummary() {
+            document.getElementById('subtotal').textContent = '$' + cartData.subtotal.toLocaleString();
+            document.getElementById('envio').textContent = '$' + cartData.shipping.toLocaleString();
+            document.getElementById('total').textContent = '$' + cartData.total.toLocaleString();
+        }
+
+        // Seleccionar método de pago
+        function selectPaymentMethod(method) {
+            // Desmarcar todos los radio buttons
+            document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+                radio.checked = false;
+            });
+            
+            // Marcar el seleccionado
+            document.getElementById(method).checked = true;
+            
+            // Actualizar estilos visuales
+            document.querySelectorAll('.payment-method').forEach(methodDiv => {
+                methodDiv.style.borderColor = 'var(--gray-200)';
+            });
+            
+            event.currentTarget.style.borderColor = 'var(--primary-color)';
+        }
+
+        // Procesar pago
+        function procesarPago() {
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked');
+            
+            if (!selectedMethod) {
+                alert('Por favor selecciona un método de pago');
+                return;
+            }
+
+            const method = selectedMethod.value;
+            
+            switch(method) {
+                case 'webpay':
+                    // Redirigir a WebPay
+                    iniciarPagoWebPay();
+                    break;
+                case 'transfer':
+                    // Mostrar instrucciones de transferencia
+                    mostrarInstruccionesTransferencia();
+                    break;
+                case 'store':
+                    // Confirmar pedido para pago en sucursal
+                    confirmarPedidoSucursal();
+                    break;
+            }
+        }
+
+        // Iniciar pago con WebPay
+        function iniciarPagoWebPay() {
+            const pagoData = {
+                monto: cartData.total,
+                pedidoId: Date.now(), // ID temporal del pedido
+                descripcion: 'Compra Ferremas - Herramientas y materiales'
+            };
+
+            // Llamada al backend para iniciar pago WebPay
+            fetch('/api/webpay/iniciar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(pagoData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.url) {
+                    // Redirigir a WebPay
+                    window.location.href = data.url;
+                } else {
+                    alert('Error al procesar el pago. Por favor intenta nuevamente.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al procesar el pago. Por favor intenta nuevamente.');
+            });
+        }
+
+        // Mostrar instrucciones de transferencia
+        function mostrarInstruccionesTransferencia() {
+            const mensaje = `
+                Instrucciones para transferencia bancaria:
+                
+                Banco: Banco de Chile
+                Cuenta Corriente: 12345678
+                RUT: 76.123.456-7
+                Monto: $${cartData.total.toLocaleString()}
+                
+                Una vez realizada la transferencia, envía el comprobante a:
+                pagos@ferremas.cl
+                
+                Tu pedido será procesado una vez confirmado el pago.
+            `;
+            
+            alert(mensaje);
+        }
+
+        // Confirmar pedido para pago en sucursal
+        function confirmarPedidoSucursal() {
+            const confirmacion = confirm(`
+                ¿Confirmar pedido para pago en sucursal?
+                
+                Total: $${cartData.total.toLocaleString()}
+                
+                Recibirás un email con los detalles del pedido y las sucursales disponibles.
+            `);
+            
+            if (confirmacion) {
+                // Aquí se enviaría la confirmación al backend
+                alert('Pedido confirmado. Revisa tu email para más detalles.');
+                window.location.href = '/';
+            }
+        }
+
+        // Inicializar página
+        document.addEventListener('DOMContentLoaded', function() {
+            updateOrderSummary();
+        });
+    </script>
+</body>
+</html> 

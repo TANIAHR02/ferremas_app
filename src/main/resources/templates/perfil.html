@@ -1,11 +1,261 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
-    <title>Perfil</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - Ferremas</title>
     <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="/css/perfil.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<h2>Mi Perfil</h2>
-<p>Información personal del usuario.</p>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav-brand">
+                    <img src="/img/logo.png" alt="Ferremas Logo">
+                    <span>Ferremas</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="/productos" class="nav-link">Productos</a></li>
+                    <li><a href="/carrito" class="nav-link">Carrito</a></li>
+                    <li><a href="/quienes-somos" class="nav-link">¿Quiénes Somos?</a></li>
+                    <li><a href="/perfil" class="nav-link active">Mi Cuenta</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container" style="padding: 3rem 0;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <!-- Page Header -->
+            <div style="margin-bottom: 2rem;">
+                <h1 style="margin-bottom: 0.5rem;">Mi Perfil</h1>
+                <p class="text-muted">Gestiona tu información personal y preferencias</p>
+            </div>
+
+            <div class="grid grid-cols-1 grid-cols-3" style="gap: 2rem;">
+                <!-- Profile Info -->
+                <div style="grid-column: span 2;">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 style="margin: 0;">Información Personal</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="profile-form">
+                                <div class="grid grid-cols-2" style="gap: 1rem;">
+                                    <div class="form-group">
+                                        <label for="nombre" class="form-label">Nombre</label>
+                                        <input type="text" id="nombre" name="nombre" class="form-input" value="Juan Carlos" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apellido" class="form-label">Apellido</label>
+                                        <input type="text" id="apellido" name="apellido" class="form-input" value="González" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Correo electrónico</label>
+                                    <input type="email" id="email" name="email" class="form-input" value="juan.gonzalez@email.com" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="telefono" class="form-label">Teléfono</label>
+                                    <input type="tel" id="telefono" name="telefono" class="form-input" value="+56 9 1234 5678" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="direccion" class="form-label">Dirección</label>
+                                    <input type="text" id="direccion" name="direccion" class="form-input" value="Av. Providencia 1234, Santiago" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">
+                                        Guardar cambios
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Change Password -->
+                    <div class="card" style="margin-top: 2rem;">
+                        <div class="card-header">
+                            <h3 style="margin: 0;">Cambiar contraseña</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="password-form">
+                                <div class="form-group">
+                                    <label for="currentPassword" class="form-label">Contraseña actual</label>
+                                    <input type="password" id="currentPassword" name="currentPassword" class="form-input" required>
+                                </div>
+                                
+                                <div class="grid grid-cols-2" style="gap: 1rem;">
+                                    <div class="form-group">
+                                        <label for="newPassword" class="form-label">Nueva contraseña</label>
+                                        <input type="password" id="newPassword" name="newPassword" class="form-input" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirmPassword" class="form-label">Confirmar nueva contraseña</label>
+                                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-secondary">
+                                        Cambiar contraseña
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div>
+                    <!-- Profile Summary -->
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <div style="width: 80px; height: 80px; background: var(--primary-color); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: 600;">
+                                JG
+                            </div>
+                            <h4 style="margin-bottom: 0.5rem;">Juan Carlos González</h4>
+                            <p class="text-muted" style="font-size: 0.875rem; margin-bottom: 1rem;">Cliente desde 2024</p>
+                            <div style="display: flex; justify-content: center; gap: 1rem;">
+                                <button class="btn btn-sm btn-secondary">Editar foto</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Stats -->
+                    <div class="card" style="margin-top: 1rem;">
+                        <div class="card-header">
+                            <h4 style="margin: 0;">Resumen de cuenta</h4>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <span>Pedidos realizados</span>
+                                <span style="font-weight: 600; color: var(--primary-color);">12</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <span>Total gastado</span>
+                                <span style="font-weight: 600; color: var(--primary-color);">$1.250.000</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                                <span>Puntos acumulados</span>
+                                <span style="font-weight: 600; color: var(--primary-color);">2.450</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Último pedido</span>
+                                <span style="font-weight: 600; color: var(--primary-color);">Hace 3 días</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Preferences -->
+                    <div class="card" style="margin-top: 1rem;">
+                        <div class="card-header">
+                            <h4 style="margin: 0;">Preferencias</h4>
+                        </div>
+                        <div class="card-body">
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox" checked>
+                                    <span>Recibir ofertas por email</span>
+                                </label>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox" checked>
+                                    <span>Notificaciones de pedidos</span>
+                                </label>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox">
+                                    <span>Newsletter semanal</span>
+                                </label>
+                            </div>
+                            <div>
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="checkbox" checked>
+                                    <span>Recordatorios de mantenimiento</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card" style="margin-top: 1rem;">
+                        <div class="card-header">
+                            <h4 style="margin: 0;">Acciones rápidas</h4>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <a href="/pedidos" class="btn btn-secondary btn-sm" style="text-align: left;">
+                                    📦 Ver mis pedidos
+                                </a>
+                                <a href="/favoritos" class="btn btn-secondary btn-sm" style="text-align: left;">
+                                    ❤️ Mis favoritos
+                                </a>
+                                <a href="/direcciones" class="btn btn-secondary btn-sm" style="text-align: left;">
+                                    📍 Mis direcciones
+                                </a>
+                                <a href="/metodos-pago" class="btn btn-secondary btn-sm" style="text-align: left;">
+                                    💳 Métodos de pago
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: var(--gray-100); padding: 3rem 0; margin-top: 4rem;">
+        <div class="container">
+            <div class="grid grid-cols-4" style="gap: 2rem;">
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Ferremas</h5>
+                    <p class="text-muted" style="font-size: 0.875rem;">Tu tienda de confianza para herramientas y materiales de construcción.</p>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Productos</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Herramientas</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Materiales</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Electricidad</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Plomería</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Servicios</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Envío a domicilio</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Asesoría técnica</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Garantía extendida</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Financiamiento</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Contacto</h5>
+                    <p class="text-muted" style="font-size: 0.875rem;">
+                        📞 +56 2 2345 6789<br>
+                        📧 info@ferremas.cl<br>
+                        📍 Av. Providencia 1234, Santiago
+                    </p>
+                </div>
+            </div>
+            <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--gray-300);">
+            <div style="text-align: center;">
+                <p class="text-muted mb-0">
+                    © 2024 Ferremas. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

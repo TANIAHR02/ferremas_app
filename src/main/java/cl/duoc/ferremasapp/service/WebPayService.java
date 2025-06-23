@@ -5,4 +5,5 @@ import cl.duoc.ferremasapp.dto.PagoResponseDTO;
 
 public interface WebPayService {
     PagoResponseDTO iniciarPago(PagoDTO pagoDTO);
+    PagoResponseDTO consultarEstadoTransaccion(String token);
 }

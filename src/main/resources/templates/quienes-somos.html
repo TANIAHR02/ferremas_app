@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quiénes Somos? - Ferremas</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav-brand">
+                    <img src="/img/logo.png" alt="Ferremas Logo">
+                    <span>Ferremas</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="/productos" class="nav-link">Productos</a></li>
+                    <li><a href="/carrito" class="nav-link">Carrito</a></li>
+                    <li><a href="/quienes-somos" class="nav-link active">¿Quiénes Somos?</a></li>
+                    <li><a href="/login" class="nav-link">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section style="background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: white; padding: 4rem 0;">
+        <div class="container">
+            <div style="text-align: center;">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem;">¿Quiénes Somos?</h1>
+                <p style="font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+                    Más de 25 años siendo tu socio de confianza en herramientas y materiales de construcción
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historia Section -->
+    <section style="padding: 4rem 0; background: var(--white);">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div>
+                    <h2 style="margin-bottom: 1.5rem; color: var(--primary-color);">Nuestra Historia</h2>
+                    <p style="margin-bottom: 1rem; line-height: 1.6;">
+                        Ferremas nació en 1998 como una pequeña ferretería familiar en Santiago, con la visión de ofrecer 
+                        herramientas y materiales de calidad a precios justos para profesionales y aficionados del bricolaje.
+                    </p>
+                    <p style="margin-bottom: 1rem; line-height: 1.6;">
+                        Con el tiempo, nos hemos convertido en una de las distribuidoras más importantes del país, 
+                        expandiendo nuestra presencia a múltiples sucursales y desarrollando una plataforma digital 
+                        que nos permite llegar a clientes en todo Chile.
+                    </p>
+                    <p style="line-height: 1.6;">
+                        Hoy, seguimos siendo una empresa familiar comprometida con la excelencia, la innovación 
+                        y el servicio al cliente, manteniendo los valores que nos hicieron crecer desde el primer día.
+                    </p>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://via.placeholder.com/500x400/2563eb/ffffff?text=Historia+Ferremas" 
+                         alt="Historia Ferremas" style="max-width: 100%; height: auto; border-radius: 1rem;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Misión y Visión -->
+    <section style="padding: 4rem 0; background: var(--gray-50);">
+        <div class="container">
+            <div class="grid grid-cols-2" style="gap: 3rem;">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div style="width: 80px; height: 80px; background: var(--primary-color); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                            🎯
+                        </div>
+                        <h3 style="margin-bottom: 1rem; color: var(--primary-color);">Nuestra Misión</h3>
+                        <p class="text-muted" style="line-height: 1.6;">
+                            Proporcionar herramientas y materiales de construcción de la más alta calidad, 
+                            ofreciendo un servicio excepcional y asesoría técnica especializada para que 
+                            nuestros clientes puedan realizar sus proyectos con confianza y éxito.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div style="width: 80px; height: 80px; background: var(--accent-color); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                            👁️
+                        </div>
+                        <h3 style="margin-bottom: 1rem; color: var(--primary-color);">Nuestra Visión</h3>
+                        <p class="text-muted" style="line-height: 1.6;">
+                            Ser la empresa líder en la distribución de herramientas y materiales de construcción 
+                            en Chile, reconocida por nuestra innovación, calidad de productos y compromiso 
+                            con la satisfacción total del cliente.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores -->
+    <section style="padding: 4rem 0; background: var(--white);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="margin-bottom: 1rem;">Nuestros Valores</h2>
+                <p class="text-muted" style="font-size: 1.125rem;">Los principios que guían nuestro trabajo diario</p>
+            </div>
+            
+            <div class="grid grid-cols-4" style="gap: 2rem;">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div style="width: 60px; height: 60px; background: var(--primary-color); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            🤝
+                        </div>
+                        <h4 style="margin-bottom: 0.5rem;">Confianza</h4>
+                        <p class="text-muted" style="font-size: 0.875rem;">Construimos relaciones duraderas basadas en la confianza mutua.</p>
+                    </div>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div style="width: 60px; height: 60px; background: var(--accent-color); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            ⭐
+                        </div>
+                        <h4 style="margin-bottom: 0.5rem;">Calidad</h4>
+                        <p class="text-muted" style="font-size: 0.875rem;">Ofrecemos solo productos de la más alta calidad.</p>
+                    </div>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div style="width: 60px; height: 60px; background: var(--secondary-color); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            💡
+                        </div>
+                        <h4 style="margin-bottom: 0.5rem;">Innovación</h4>
+                        <p class="text-muted" style="font-size: 0.875rem;">Buscamos constantemente nuevas soluciones y mejoras.</p>
+                    </div>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="card-body">
+                        <div style="width: 60px; height: 60px; background: var(--success-color); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            🎯
+                        </div>
+                        <h4 style="margin-bottom: 0.5rem;">Excelencia</h4>
+                        <p class="text-muted" style="font-size: 0.875rem;">Nos esforzamos por la excelencia en todo lo que hacemos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipo -->
+    <section style="padding: 4rem 0; background: var(--gray-50);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="margin-bottom: 1rem;">Nuestro Equipo</h2>
+                <p class="text-muted" style="font-size: 1.125rem;">Conoce a las personas que hacen posible Ferremas</p>
+            </div>
+            
+            <div class="grid grid-cols-3" style="gap: 2rem;">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <img src="https://via.placeholder.com/200x200/2563eb/ffffff?text=CEO" 
+                             alt="CEO" style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1rem; object-fit: cover;">
+                        <h4 style="margin-bottom: 0.5rem;">Carlos Mendoza</h4>
+                        <p style="color: var(--primary-color); font-weight: 500; margin-bottom: 0.5rem;">CEO & Fundador</p>
+                        <p class="text-muted" style="font-size: 0.875rem;">Más de 25 años de experiencia en el sector de la construcción.</p>
+                    </div>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="card-body">
+                        <img src="https://via.placeholder.com/200x200/f59e0b/ffffff?text=CTO" 
+                             alt="CTO" style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1rem; object-fit: cover;">
+                        <h4 style="margin-bottom: 0.5rem;">Ana Rodríguez</h4>
+                        <p style="color: var(--primary-color); font-weight: 500; margin-bottom: 0.5rem;">CTO</p>
+                        <p class="text-muted" style="font-size: 0.875rem;">Líder en innovación tecnológica y transformación digital.</p>
+                    </div>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="card-body">
+                        <img src="https://via.placeholder.com/200x200/10b981/ffffff?text=COO" 
+                             alt="COO" style="width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1rem; object-fit: cover;">
+                        <h4 style="margin-bottom: 0.5rem;">Miguel Torres</h4>
+                        <p style="color: var(--primary-color); font-weight: 500; margin-bottom: 0.5rem;">COO</p>
+                        <p class="text-muted" style="font-size: 0.875rem;">Especialista en operaciones y logística de distribución.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section style="padding: 4rem 0; background: var(--primary-color); color: white;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="margin-bottom: 1rem;">Ferremas en Números</h2>
+                <p style="opacity: 0.9; font-size: 1.125rem;">Cifras que respaldan nuestro compromiso con la excelencia</p>
+            </div>
+            
+            <div class="grid grid-cols-4" style="gap: 2rem; text-align: center;">
+                <div>
+                    <h3 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 700;">25+</h3>
+                    <p style="opacity: 0.9;">Años de experiencia</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 700;">15</h3>
+                    <p style="opacity: 0.9;">Sucursales en Chile</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 700;">50K+</h3>
+                    <p style="opacity: 0.9;">Clientes satisfechos</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 700;">10K+</h3>
+                    <p style="opacity: 0.9;">Productos en catálogo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--gray-100); padding: 3rem 0;">
+        <div class="container">
+            <div class="grid grid-cols-4" style="gap: 2rem;">
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Ferremas</h5>
+                    <p class="text-muted" style="font-size: 0.875rem;">Tu tienda de confianza para herramientas y materiales de construcción.</p>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Productos</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Herramientas</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Materiales</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Electricidad</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Plomería</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Servicios</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Envío a domicilio</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Asesoría técnica</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Garantía extendida</a></li>
+                        <li><a href="#" class="text-muted" style="text-decoration: none;">Financiamiento</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 style="margin-bottom: 1rem;">Contacto</h5>
+                    <p class="text-muted" style="font-size: 0.875rem;">
+                        📞 +56 2 2345 6789<br>
+                        📧 info@ferremas.cl<br>
+                        📍 Av. Providencia 1234, Santiago
+                    </p>
+                </div>
+            </div>
+            <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--gray-300);">
+            <div style="text-align: center;">
+                <p class="text-muted mb-0">
+                    © 2024 Ferremas. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

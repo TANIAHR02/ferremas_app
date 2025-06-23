@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado del Pago - Ferremas</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav-brand">
+                    <img src="/img/logo.png" alt="Ferremas Logo">
+                    <span>Ferremas</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="/productos" class="nav-link">Productos</a></li>
+                    <li><a href="/carrito" class="nav-link">Carrito</a></li>
+                    <li><a href="/quienes-somos" class="nav-link">¿Quiénes Somos?</a></li>
+                    <li><a href="/login" class="nav-link">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="container" style="padding: 3rem 0;">
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+            <div th:if="${status} == 'success'">
+                <h1 style="color: var(--success-color);">¡Pago realizado con éxito!</h1>
+                <p>Tu pago fue procesado correctamente.<br>Gracias por tu compra en Ferremas.</p>
+                <p><strong>Token de transacción:</strong> <span th:text="${token}"></span></p>
+                <p><strong>Monto:</strong> <span th:text="${monto}"></span></p>
+                <p><strong>Orden de compra:</strong> <span th:text="${orden}"></span></p>
+                <a href="/productos" class="btn btn-primary">Seguir comprando</a>
+            </div>
+            <div th:if="${status} != 'success'">
+                <h1 style="color: var(--danger-color);">Pago no procesado</h1>
+                <p>Hubo un problema al procesar tu pago.<br>Por favor, intenta nuevamente o contacta soporte.</p>
+                <p th:if="${error}" style="color: var(--danger-color);"><strong th:text="${error}"></strong></p>
+                <a href="/carrito" class="btn btn-secondary">Volver al carrito</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 
