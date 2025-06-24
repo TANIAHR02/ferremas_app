@@ -5,7 +5,7 @@
 
 ## 📋 Descripción General
 
-FerremasApp es una aplicación integral desarrollada en **Java + Spring Boot 3.x**, con integración de **H2/MySQL**, que permite gestionar clientes, productos, pedidos, pagos y más, para una distribuidora ferretera. El sistema incluye una interfaz web moderna y responsiva, integración con sistemas de pago y APIs externas.
+FerremasApp es una aplicación integral desarrollada en **Java + Spring Boot 3.x**, con integración de **MySQL**, que permite gestionar clientes, productos, pedidos, pagos y más, para una distribuidora ferretera. El sistema incluye una interfaz web moderna y responsiva, integración con sistemas de pago y APIs externas.
 
 ### 🚀 Características Principales
 
