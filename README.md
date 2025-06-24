@@ -62,8 +62,8 @@ cd ferremasapp
 
 | Recurso | URL | Descripción |
 |---------|-----|-------------|
-| **Aplicación Web** | http://localhost:8080 | Interfaz principal |
-| **Documentación API** | http://localhost:8080/swagger-ui.html | Swagger UI |
+| **Aplicación Web** | http://localhost:8081 | Interfaz principal |
+| **Documentación API** | http://localhost:8081/swagger-ui.html | Swagger UI |
 | **Base de Datos Mysql** | http://localhost/phpmyadmin/index.php?route=/database/structure&db=ferremas_db
 
 ---
