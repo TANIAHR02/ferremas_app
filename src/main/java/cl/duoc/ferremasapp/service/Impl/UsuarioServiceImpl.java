@@ -21,8 +21,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario registrarUsuario(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    public void registrarUsuario(Usuario usuario) {
+        usuarioRepository.save(usuario);
     }
 
     @Override
@@ -32,8 +32,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Override
     public List<Usuario> listarUsuarios() {
-        //
-        throw new UnsupportedOperationException("Unimplemented method 'listarUsuarios'");
+        return usuarioRepository.findAll();
     }
 
     @Override
