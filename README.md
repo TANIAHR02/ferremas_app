@@ -162,7 +162,7 @@ Rol: CLIENTE
 - **Gestión de transacciones** y estados
 
 #### 🔹 Vista Física
-- **Servidor Tomcat** en puerto 8080
+- **Servidor Tomcat** en puerto 8081
 - **Base de datos H2/MySQL**
 - **Dependencias externas** gestionadas por Maven
 - **Recursos estáticos** servidos por Spring Boot
@@ -178,8 +178,8 @@ Rol: CLIENTE
 
 ### Swagger UI
 La documentación completa se genera automáticamente mediante **Swagger / OpenAPI**:
-- **URL**: http://localhost:8080/swagger-ui.html
-- **Especificación OpenAPI**: http://localhost:8080/v3/api-docs
+- **URL**: http://localhost:8081/swagger-ui.html
+- **Especificación OpenAPI**: http://localhost:8081/v3/api-docs
 
 ### Endpoints Principales
 
@@ -355,8 +355,8 @@ ferremasapp/
 - **Repositorio**: https://github.com/TANIAHR02/ferremas_app.git
 
 ### Recursos Adicionales
-- **Documentación API**: http://localhost:8080/swagger-ui.html
-- **Base de Datos**: http://localhost:8080/h2-console
+- **Documentación API**: http://localhost:8081/swagger-ui.html
+- **Base de Datos**: http://localhost/phpmyadmin/index.php?route=/database/structure&db=ferremas_db
 - **Reportes de Pruebas**: Ver archivos en `/docs/`
 
 ---
