@@ -1,0 +1,139 @@
+### Pruebas de Actualización de Precios de Productos - PATCH API
+
+# ========================================
+# CONFIGURACIÓN BASE
+# ========================================
+@baseUrl = http://localhost:8081
+@contentType = application/json
+
+# ========================================
+# PRUEBA 1: Verificar aplicación
+# ========================================
+GET {{baseUrl}}/api/productos
+
+###
+
+# ========================================
+# PRUEBA 2: Actualizar precio por ID
+# ========================================
+PATCH {{baseUrl}}/api/productos/1/precio
+Content-Type: {{contentType}}
+
+{
+  "nuevoPrecio": 18990.00,
+  "motivo": "Ajuste de precios por inflación",
+  "usuario": "admin@ferremas.cl"
+}
+
+###
+
+# ========================================
+# PRUEBA 3: Actualizar precio por código
+# ========================================
+PATCH {{baseUrl}}/api/productos/codigo/MART001/precio
+Content-Type: {{contentType}}
+
+{
+  "nuevoPrecio": 15990.00,
+  "motivo": "Promoción especial",
+  "usuario": "gerente@ferremas.cl"
+}
+
+###
+
+# ========================================
+# PRUEBA 4: Actualizar precio con valor inválido (debe fallar)
+# ========================================
+PATCH {{baseUrl}}/api/productos/1/precio
+Content-Type: {{contentType}}
+
+{
+  "nuevoPrecio": -100.00,
+  "motivo": "Precio negativo inválido",
+  "usuario": "test@ferremas.cl"
+}
+
+###
+
+# ========================================
+# PRUEBA 5: Actualizar precio de producto inexistente (debe fallar)
+# ========================================
+PATCH {{baseUrl}}/api/productos/999/precio
+Content-Type: {{contentType}}
+
+{
+  "nuevoPrecio": 25000.00,
+  "motivo": "Producto que no existe",
+  "usuario": "test@ferremas.cl"
+}
+
+###
+
+# ========================================
+# PRUEBA 6: Actualizar precio con código inexistente (debe fallar)
+# ========================================
+PATCH {{baseUrl}}/api/productos/codigo/INEXISTENTE/precio
+Content-Type: {{contentType}}
+
+{
+  "nuevoPrecio": 15000.00,
+  "motivo": "Código que no existe",
+  "usuario": "test@ferremas.cl"
+}
+
+###
+
+# ========================================
+# PRUEBA 7: Actualizar precio sin motivo (opcional)
+# ========================================
+PATCH {{baseUrl}}/api/productos/2/precio
+Content-Type: {{contentType}}
+
+{
+  "nuevoPrecio": 12500.00,
+  "usuario": "admin@ferremas.cl"
+}
+
+###
+
+# ========================================
+# PRUEBA 8: Obtener historial de precios por ID
+# ========================================
+GET {{baseUrl}}/api/productos/1/historial-precios
+
+###
+
+# ========================================
+# PRUEBA 9: Obtener historial de precios por código
+# ========================================
+GET {{baseUrl}}/api/productos/codigo/MART001/historial-precios
+
+###
+
+# ========================================
+# PRUEBA 10: Actualizar precio con decimales
+# ========================================
+PATCH {{baseUrl}}/api/productos/3/precio
+Content-Type: {{contentType}}
+
+{
+  "nuevoPrecio": 89990.50,
+  "motivo": "Ajuste de precios con decimales",
+  "usuario": "finanzas@ferremas.cl"
+}
+
+###
+
+# ========================================
+# PRUEBA 11: Actualizar precio con motivo largo
+# ========================================
+PATCH {{baseUrl}}/api/productos/4/precio
+Content-Type: {{contentType}}
+
+{
+  "nuevoPrecio": 45000.00,
+  "motivo": "Ajuste de precios debido a cambios en los costos de importación y fluctuaciones en el tipo de cambio. Este cambio refleja la nueva estructura de costos operativos.",
+  "usuario": "gerente.finanzas@ferremas.cl"
+}
+
+### 

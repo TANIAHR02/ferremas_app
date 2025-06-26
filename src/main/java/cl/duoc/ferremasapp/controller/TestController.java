@@ -15,8 +15,22 @@ public class TestController {
     public Map<String, Object> healthCheck() {
         Map<String, Object> response = new HashMap<>();
         response.put("status", "OK");
-        response.put("message", "Ferremas API is running");
+        response.put("message", "Aplicación funcionando correctamente");
         response.put("timestamp", System.currentTimeMillis());
+        return response;
+    }
+
+    @GetMapping("/webpay-simulation-status")
+    public Map<String, Object> webpaySimulationStatus() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", "OK");
+        response.put("message", "Endpoint de simulación WebPay disponible");
+        response.put("endpoints", new String[]{
+            "GET /api/webpay-simulation/simulate/scenario",
+            "POST /api/webpay-simulation/simulate/init",
+            "GET /api/webpay-simulation/simulate/transactions",
+            "GET /api/webpay-simulation/simulate/panel"
+        });
         return response;
     }
 

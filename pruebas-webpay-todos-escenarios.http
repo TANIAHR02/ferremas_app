@@ -1,0 +1,385 @@
+### ========================================
+### PRUEBAS COMPLETAS DE SIMULACIÓN WEBPAY
+### TODOS LOS ESCENARIOS DISPONIBLES
+### ========================================
+
+### 1. OBTENER ESCENARIOS DISPONIBLES
+GET http://localhost:8081/api/webpay-simulation/simulate/scenarios
+Content-Type: application/json
+
+### 2. OBTENER ESCENARIO ACTUAL
+GET http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+### 3. OBTENER TRANSACCIONES ACTUALES
+GET http://localhost:8081/api/webpay-simulation/simulate/transactions
+Content-Type: application/json
+
+### ========================================
+### PRUEBAS POR ESCENARIO
+### ========================================
+
+### ESCENARIO: PAGO EXITOSO
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "SUCCESS"
+}
+
+### INICIAR PAGO EXITOSO
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1001,
+    "monto": 25000
+}
+
+### ESCENARIO: PAGO FALLIDO
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "FAIL"
+}
+
+### INICIAR PAGO FALLIDO
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1002,
+    "monto": 15000
+}
+
+### ESCENARIO: TIMEOUT
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "TIMEOUT"
+}
+
+### INICIAR PAGO CON TIMEOUT
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1003,
+    "monto": 30000
+}
+
+### ESCENARIO: FONDOS INSUFICIENTES
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "INSUFFICIENT_FUNDS"
+}
+
+### INICIAR PAGO CON FONDOS INSUFICIENTES
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1004,
+    "monto": 50000
+}
+
+### ESCENARIO: TARJETA RECHAZADA
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "CARD_DECLINED"
+}
+
+### INICIAR PAGO CON TARJETA RECHAZADA
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1005,
+    "monto": 20000
+}
+
+### ESCENARIO: TARJETA INVÁLIDA
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "INVALID_CARD"
+}
+
+### INICIAR PAGO CON TARJETA INVÁLIDA
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1006,
+    "monto": 18000
+}
+
+### ESCENARIO: TARJETA EXPIRADA
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "EXPIRED_CARD"
+}
+
+### INICIAR PAGO CON TARJETA EXPIRADA
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1007,
+    "monto": 12000
+}
+
+### ESCENARIO: CÓDIGO DE SEGURIDAD INVÁLIDO
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "SECURITY_CODE_INVALID"
+}
+
+### INICIAR PAGO CON CÓDIGO DE SEGURIDAD INVÁLIDO
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1008,
+    "monto": 22000
+}
+
+### ESCENARIO: TRANSACCIÓN DUPLICADA
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "DUPLICATE_TRANSACTION"
+}
+
+### INICIAR PAGO CON TRANSACCIÓN DUPLICADA
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1009,
+    "monto": 28000
+}
+
+### ESCENARIO: COMERCIO NO ENCONTRADO
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "MERCHANT_NOT_FOUND"
+}
+
+### INICIAR PAGO CON COMERCIO NO ENCONTRADO
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1010,
+    "monto": 16000
+}
+
+### ESCENARIO: MONTO MUY ALTO
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "AMOUNT_TOO_HIGH"
+}
+
+### INICIAR PAGO CON MONTO MUY ALTO
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1011,
+    "monto": 1000000
+}
+
+### ESCENARIO: MONTO MUY BAJO
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "AMOUNT_TOO_LOW"
+}
+
+### INICIAR PAGO CON MONTO MUY BAJO
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1012,
+    "monto": 100
+}
+
+### ESCENARIO: LÍMITE DIARIO EXCEDIDO
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "DAILY_LIMIT_EXCEEDED"
+}
+
+### INICIAR PAGO CON LÍMITE DIARIO EXCEDIDO
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1013,
+    "monto": 35000
+}
+
+### ESCENARIO: LÍMITE MENSUAL EXCEDIDO
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "MONTHLY_LIMIT_EXCEEDED"
+}
+
+### INICIAR PAGO CON LÍMITE MENSUAL EXCEDIDO
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1014,
+    "monto": 45000
+}
+
+### ESCENARIO: BANCO EN MANTENIMIENTO
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "BANK_MAINTENANCE"
+}
+
+### INICIAR PAGO CON BANCO EN MANTENIMIENTO
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1015,
+    "monto": 19000
+}
+
+### ESCENARIO: ERROR DE RED
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "NETWORK_ERROR"
+}
+
+### INICIAR PAGO CON ERROR DE RED
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1016,
+    "monto": 26000
+}
+
+### ESCENARIO: ERROR DEL SISTEMA
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "SYSTEM_ERROR"
+}
+
+### INICIAR PAGO CON ERROR DEL SISTEMA
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1017,
+    "monto": 14000
+}
+
+### ESCENARIO: ALEATORIO EXITOSO (80% éxito)
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "RANDOM_SUCCESS"
+}
+
+### INICIAR PAGO ALEATORIO EXITOSO
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1018,
+    "monto": 32000
+}
+
+### ESCENARIO: ALEATORIO FALLIDO (20% éxito)
+POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+Content-Type: application/json
+
+{
+    "scenario": "RANDOM_FAILURE"
+}
+
+### INICIAR PAGO ALEATORIO FALLIDO
+POST http://localhost:8081/api/webpay-simulation/simulate/init
+Content-Type: application/json
+
+{
+    "pedidoId": 1019,
+    "monto": 38000
+}
+
+### ========================================
+### CONSULTAS DE ESTADO
+### ========================================
+
+### CONSULTAR ESTADO DE TRANSACCIÓN (reemplazar TOKEN_AQUI con el token real)
+GET http://localhost:8081/api/webpay-simulation/simulate/status/TOKEN_AQUI
+Content-Type: application/json
+
+### ========================================
+### ADMINISTRACIÓN
+### ========================================
+
+### LIMPIAR TODAS LAS TRANSACCIONES
+DELETE http://localhost:8081/api/webpay-simulation/simulate/transactions
+Content-Type: application/json
+
+### ACTIVAR MODO SIMULACIÓN
+POST http://localhost:8081/api/webpay-simulation/simulate/mode
+Content-Type: application/json
+
+{
+    "enabled": true
+}
+
+### DESACTIVAR MODO SIMULACIÓN
+POST http://localhost:8081/api/webpay-simulation/simulate/mode
+Content-Type: application/json
+
+{
+    "enabled": false
+}
+
+### ========================================
+### ACCESO A PANELES WEB
+### ========================================
+
+### PANEL DE CONTROL DE SIMULACIÓN
+GET http://localhost:8081/api/webpay-simulation/simulate/panel
+
+### SIMULACIÓN DE PAGO (reemplazar TOKEN_AQUI con el token real)
+GET http://localhost:8081/api/webpay-simulation/simulate/TOKEN_AQUI 

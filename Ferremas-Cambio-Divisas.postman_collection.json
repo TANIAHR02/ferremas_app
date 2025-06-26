@@ -1,0 +1,470 @@
+{
+  "info": {
+    "name": "Ferremas - Cambio de Divisas",
+    "description": "Collection para probar la funcionalidad de cambio de divisas de Ferremas",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Obtener Tasa de Cambio",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/tasa-cambio",
+          "host": ["{{baseUrl}}"],
+          "path": ["tasa-cambio"]
+        },
+        "description": "Obtiene la tasa de cambio actual del USD"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar respuesta exitosa",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar tiempo de respuesta",
+              "pm.test(\"Response time is less than 2000ms\", function () {",
+              "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+              "});",
+              "",
+              "// Verificar que la respuesta contiene USD y CLP",
+              "pm.test(\"Response contains USD and CLP\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"USD\");",
+              "    pm.expect(pm.response.text()).to.include(\"CLP\");",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Obtener Todas las Tasas",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/tasas-cambio",
+          "host": ["{{baseUrl}}"],
+          "path": ["tasas-cambio"]
+        },
+        "description": "Obtiene todas las tasas de cambio disponibles"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar respuesta exitosa",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que es un array JSON",
+              "pm.test(\"Response is JSON array\", function () {",
+              "    pm.response.to.be.json;",
+              "    pm.expect(pm.response.json()).to.be.an('array');",
+              "});",
+              "",
+              "// Verificar que contiene las monedas esperadas",
+              "pm.test(\"Contains expected currencies\", function () {",
+              "    const response = pm.response.json();",
+              "    const currencies = response.map(item => item.codigo);",
+              "    pm.expect(currencies).to.include('USD');",
+              "    pm.expect(currencies).to.include('EUR');",
+              "    pm.expect(currencies).to.include('CLP');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Obtener Tasa USD",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/tasa-cambio/USD",
+          "host": ["{{baseUrl}}"],
+          "path": ["tasa-cambio", "USD"]
+        },
+        "description": "Obtiene la tasa específica del USD"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar respuesta exitosa",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar estructura JSON",
+              "pm.test(\"Response has correct structure\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.have.property('codigo');",
+              "    pm.expect(response).to.have.property('tasaCambio');",
+              "    pm.expect(response.codigo).to.equal('USD');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Obtener Tasa EUR",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/tasa-cambio/EUR",
+          "host": ["{{baseUrl}}"],
+          "path": ["tasa-cambio", "EUR"]
+        },
+        "description": "Obtiene la tasa específica del EUR"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar respuesta exitosa",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar estructura JSON",
+              "pm.test(\"Response has correct structure\", function () {",
+              "    const response = pm.response.json();",
+              "    pm.expect(response).to.have.property('codigo');",
+              "    pm.expect(response).to.have.property('tasaCambio');",
+              "    pm.expect(response.codigo).to.equal('EUR');",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Convertir 100 USD",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/convertir-usd?montoUSD=100",
+          "host": ["{{baseUrl}}"],
+          "path": ["convertir-usd"],
+          "query": [
+            {
+              "key": "montoUSD",
+              "value": "100"
+            }
+          ]
+        },
+        "description": "Convierte 100 USD a CLP"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar respuesta exitosa",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que es un número",
+              "pm.test(\"Response is a number\", function () {",
+              "    const response = parseFloat(pm.response.text());",
+              "    pm.expect(response).to.be.a('number');",
+              "    pm.expect(response).to.be.greaterThan(0);",
+              "});",
+              "",
+              "// Verificar cálculo aproximado (100 USD * ~950 CLP = ~95000)",
+              "pm.test(\"Conversion is approximately correct\", function () {",
+              "    const response = parseFloat(pm.response.text());",
+              "    pm.expect(response).to.be.closeTo(95000, 1000);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Convertir 50 EUR",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/convertir-eur?montoEUR=50",
+          "host": ["{{baseUrl}}"],
+          "path": ["convertir-eur"],
+          "query": [
+            {
+              "key": "montoEUR",
+              "value": "50"
+            }
+          ]
+        },
+        "description": "Convierte 50 EUR a CLP"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar respuesta exitosa",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que es un número",
+              "pm.test(\"Response is a number\", function () {",
+              "    const response = parseFloat(pm.response.text());",
+              "    pm.expect(response).to.be.a('number');",
+              "    pm.expect(response).to.be.greaterThan(0);",
+              "});",
+              "",
+              "// Verificar cálculo aproximado (50 EUR * ~1050 CLP = ~52500)",
+              "pm.test(\"Conversion is approximately correct\", function () {",
+              "    const response = parseFloat(pm.response.text());",
+              "    pm.expect(response).to.be.closeTo(52500, 1000);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Conversión Manual",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/convertir?montoExtranjero=100&tasaCambio=950.50",
+          "host": ["{{baseUrl}}"],
+          "path": ["convertir"],
+          "query": [
+            {
+              "key": "montoExtranjero",
+              "value": "100"
+            },
+            {
+              "key": "tasaCambio",
+              "value": "950.50"
+            }
+          ]
+        },
+        "description": "Conversión manual con tasa específica"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar respuesta exitosa",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar cálculo exacto (100 * 950.50 = 95050)",
+              "pm.test(\"Manual conversion is exact\", function () {",
+              "    const response = parseFloat(pm.response.text());",
+              "    pm.expect(response).to.equal(95050);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "8. Error - Moneda Inexistente",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/tasa-cambio/JPY",
+          "host": ["{{baseUrl}}"],
+          "path": ["tasa-cambio", "JPY"]
+        },
+        "description": "Prueba de error con moneda inexistente"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar que devuelve error",
+              "pm.test(\"Returns error for invalid currency\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([400, 404, 500]);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "9. Convertir Monto Cero",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/convertir-usd?montoUSD=0",
+          "host": ["{{baseUrl}}"],
+          "path": ["convertir-usd"],
+          "query": [
+            {
+              "key": "montoUSD",
+              "value": "0"
+            }
+          ]
+        },
+        "description": "Prueba con monto cero"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar respuesta exitosa",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que devuelve cero",
+              "pm.test(\"Returns zero for zero amount\", function () {",
+              "    const response = parseFloat(pm.response.text());",
+              "    pm.expect(response).to.equal(0);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "10. Convertir Monto Negativo",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/convertir-usd?montoUSD=-10",
+          "host": ["{{baseUrl}}"],
+          "path": ["convertir-usd"],
+          "query": [
+            {
+              "key": "montoUSD",
+              "value": "-10"
+            }
+          ]
+        },
+        "description": "Prueba con monto negativo"
+      },
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Verificar respuesta exitosa",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "// Verificar que devuelve valor negativo",
+              "pm.test(\"Returns negative value\", function () {",
+              "    const response = parseFloat(pm.response.text());",
+              "    pm.expect(response).to.be.lessThan(0);",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Verificar que la aplicación esté disponible",
+          "pm.test(\"Application is available\", function () {",
+          "    pm.expect(pm.response).to.not.be.null;",
+          "});"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8081/api/banco-central",
+      "type": "string"
+    }
+  ]
+} 

@@ -1,0 +1,419 @@
+{
+	"info": {
+		"_postman_id": "ferremas-actualizar-precios-v2",
+		"name": "Ferremas - Actualizar Precios (Puerto 8081)",
+		"description": "Colección de pruebas para los endpoints PATCH de actualización de precios de productos - Configurado para puerto 8081",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Verificar Aplicación",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/productos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"productos"
+					]
+				},
+				"description": "Verificar que la aplicación esté ejecutándose correctamente"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Precio por ID",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nuevoPrecio\": 18990.00,\n  \"motivo\": \"Ajuste de precios por inflación\",\n  \"usuario\": \"admin@ferremas.cl\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/productos/1/precio",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"productos",
+						"1",
+						"precio"
+					]
+				},
+				"description": "Actualiza el precio de un producto usando su ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Precio por Código",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nuevoPrecio\": 15990.00,\n  \"motivo\": \"Promoción especial\",\n  \"usuario\": \"gerente@ferremas.cl\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/productos/codigo/MART001/precio",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"productos",
+						"codigo",
+						"MART001",
+						"precio"
+					]
+				},
+				"description": "Actualiza el precio de un producto usando su código"
+			},
+			"response": []
+		},
+		{
+			"name": "Precio Inválido (Error 400)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nuevoPrecio\": -100.00,\n  \"motivo\": \"Precio negativo inválido\",\n  \"usuario\": \"test@ferremas.cl\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/productos/1/precio",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"productos",
+						"1",
+						"precio"
+					]
+				},
+				"description": "Prueba de validación con precio negativo (debe devolver 400)"
+			},
+			"response": []
+		},
+		{
+			"name": "Producto Inexistente (Error 404)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nuevoPrecio\": 25000.00,\n  \"motivo\": \"Producto que no existe\",\n  \"usuario\": \"test@ferremas.cl\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/productos/999/precio",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"productos",
+						"999",
+						"precio"
+					]
+				},
+				"description": "Prueba con producto inexistente (debe devolver 404)"
+			},
+			"response": []
+		},
+		{
+			"name": "Código Inexistente (Error 404)",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nuevoPrecio\": 15000.00,\n  \"motivo\": \"Código que no existe\",\n  \"usuario\": \"test@ferremas.cl\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/productos/codigo/INEXISTENTE/precio",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"productos",
+						"codigo",
+						"INEXISTENTE",
+						"precio"
+					]
+				},
+				"description": "Prueba con código de producto inexistente (debe devolver 404)"
+			},
+			"response": []
+		},
+		{
+			"name": "Precio con Decimales",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nuevoPrecio\": 89990.50,\n  \"motivo\": \"Ajuste de precios con decimales\",\n  \"usuario\": \"finanzas@ferremas.cl\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/productos/3/precio",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"productos",
+						"3",
+						"precio"
+					]
+				},
+				"description": "Prueba con precio que incluye decimales"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Sin Motivo",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nuevoPrecio\": 12500.00,\n  \"usuario\": \"admin@ferremas.cl\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/productos/2/precio",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"productos",
+						"2",
+						"precio"
+					]
+				},
+				"description": "Prueba actualizando precio sin especificar motivo (campo opcional)"
+			},
+			"response": []
+		},
+		{
+			"name": "Motivo Largo",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nuevoPrecio\": 45000.00,\n  \"motivo\": \"Ajuste de precios debido a cambios en los costos de importación y fluctuaciones en el tipo de cambio. Este cambio refleja la nueva estructura de costos operativos.\",\n  \"usuario\": \"gerente.finanzas@ferremas.cl\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/productos/4/precio",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"productos",
+						"4",
+						"precio"
+					]
+				},
+				"description": "Prueba con motivo de cambio muy largo"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Historial por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/productos/1/historial-precios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"productos",
+						"1",
+						"historial-precios"
+					]
+				},
+				"description": "Obtiene el historial de precios de un producto por ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Historial por Código",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/productos/codigo/MART001/historial-precios",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"productos",
+						"codigo",
+						"MART001",
+						"historial-precios"
+					]
+				},
+				"description": "Obtiene el historial de precios de un producto por código"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Obtener el nombre del request actual",
+					"var requestName = pm.request.name;",
+					"",
+					"// Verificar que la aplicación esté ejecutándose",
+					"if (requestName === 'Verificar Aplicación') {",
+					"    pm.test('Aplicación ejecutándose', function () {",
+					"        pm.response.to.have.status(200);",
+					"    });",
+					"    return;",
+					"}",
+					"",
+					"// Verificar respuestas de error",
+					"if (requestName.indexOf('Error') !== -1 || requestName.indexOf('Inexistente') !== -1 || requestName.indexOf('Inválido') !== -1) {",
+					"    if (requestName.indexOf('Inválido') !== -1) {",
+					"        pm.test('Status code es 400 para precio inválido', function () {",
+					"            pm.response.to.have.status(400);",
+					"        });",
+					"        ",
+					"        pm.test('Respuesta contiene mensaje de error', function () {",
+					"            var jsonData = pm.response.json();",
+					"            pm.expect(jsonData).to.have.property('success', false);",
+					"            pm.expect(jsonData).to.have.property('message');",
+					"            pm.expect(jsonData).to.have.property('error', 'INVALID_PRICE');",
+					"        });",
+					"    } else {",
+					"        pm.test('Status code es 404 para producto/código inexistente', function () {",
+					"            pm.response.to.have.status(404);",
+					"        });",
+					"        ",
+					"        pm.test('Respuesta contiene mensaje de error', function () {",
+					"            var jsonData = pm.response.json();",
+					"            pm.expect(jsonData).to.have.property('success', false);",
+					"            pm.expect(jsonData).to.have.property('message');",
+					"            pm.expect(jsonData).to.have.property('error', 'PRODUCT_NOT_FOUND');",
+					"        });",
+					"    }",
+					"} else {",
+					"    // Verificar respuestas exitosas",
+					"    pm.test('Status code es 200', function () {",
+					"        pm.response.to.have.status(200);",
+					"    });",
+					"    ",
+					"    // Verificar estructura de respuesta para actualizaciones PATCH",
+					"    if (pm.request.method === 'PATCH') {",
+					"        pm.test('Respuesta contiene campos requeridos', function () {",
+					"            var jsonData = pm.response.json();",
+					"            pm.expect(jsonData).to.have.property('success', true);",
+					"            pm.expect(jsonData).to.have.property('message');",
+					"            pm.expect(jsonData).to.have.property('producto');",
+					"            pm.expect(jsonData).to.have.property('precioAnterior');",
+					"            pm.expect(jsonData).to.have.property('precioNuevo');",
+					"            pm.expect(jsonData).to.have.property('variacion');",
+					"        });",
+					"        ",
+					"        pm.test('Variación calculada correctamente', function () {",
+					"            var jsonData = pm.response.json();",
+					"            var variacion = jsonData.precioNuevo - jsonData.precioAnterior;",
+					"            pm.expect(jsonData.variacion).to.equal(variacion);",
+					"        });",
+					"    }",
+					"    ",
+					"    // Verificar respuestas GET para historial",
+					"    if (pm.request.method === 'GET' && requestName.indexOf('Historial') !== -1) {",
+					"        pm.test('Respuesta es un array', function () {",
+					"            var jsonData = pm.response.json();",
+					"            pm.expect(jsonData).to.be.an('array');",
+					"        });",
+					"    }",
+					"}",
+					"",
+					"// Verificar tiempo de respuesta",
+					"pm.test('Response time is less than 3000ms', function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(3000);",
+					"});",
+					"",
+					"// Verificar Content-Type",
+					"pm.test('Content-Type is application/json', function () {",
+					"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8081",
+			"type": "string"
+		}
+	]
+} 

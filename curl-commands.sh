@@ -3,7 +3,7 @@
 # Script de comandos curl para pruebas de la API Ferremas
 # ASY5131 - Integración de Plataformas
 
-BASE_URL="http://localhost:8080"
+BASE_URL="http://localhost:8081"
 CONTENT_TYPE="Content-Type: application/json"
 
 echo "=== PRUEBAS DE LA API FERREMAS ==="

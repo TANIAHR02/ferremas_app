@@ -1,0 +1,161 @@
+### ===============================================
+### PRUEBAS CAMBIO DE DIVISA - BANCO CENTRAL
+### ===============================================
+
+### Variables globales
+@baseUrl = http://localhost:8081/api/banco-central
+@contentType = application/json
+
+### ===============================================
+### PRUEBAS BÁSICAS DE TASAS DE CAMBIO
+### ===============================================
+
+### 1. Obtener tasa de cambio general (USD)
+GET {{baseUrl}}/tasa-cambio
+Accept: {{contentType}}
+
+###
+
+### 2. Obtener todas las tasas de cambio disponibles
+GET {{baseUrl}}/tasas-cambio
+Accept: {{contentType}}
+
+###
+
+### 3. Obtener tasa específica del USD
+GET {{baseUrl}}/tasa-cambio/USD
+Accept: {{contentType}}
+
+###
+
+### 4. Obtener tasa específica del EUR
+GET {{baseUrl}}/tasa-cambio/EUR
+Accept: {{contentType}}
+
+###
+
+### 5. Obtener tasa específica del CLP
+GET {{baseUrl}}/tasa-cambio/CLP
+Accept: {{contentType}}
+
+###
+
+### ===============================================
+### PRUEBAS DE CONVERSIÓN DE MONTOS
+### ===============================================
+
+### 6. Convertir 100 USD a CLP usando tasa manual
+GET {{baseUrl}}/convertir?montoExtranjero=100&tasaCambio=950.50
+Accept: {{contentType}}
+
+###
+
+### 7. Convertir 50 EUR a CLP usando tasa manual
+GET {{baseUrl}}/convertir?montoExtranjero=50&tasaCambio=1050.25
+Accept: {{contentType}}
+
+###
+
+### 8. Convertir 100 USD a CLP (automático)
+GET {{baseUrl}}/convertir/USD?monto=100
+Accept: {{contentType}}
+
+###
+
+### 9. Convertir 50 EUR a CLP (automático)
+GET {{baseUrl}}/convertir/EUR?monto=50
+Accept: {{contentType}}
+
+###
+
+### 10. Convertir 25 USD a CLP (endpoint específico)
+GET {{baseUrl}}/convertir-usd?montoUSD=25
+Accept: {{contentType}}
+
+###
+
+### 11. Convertir 75 EUR a CLP (endpoint específico)
+GET {{baseUrl}}/convertir-eur?montoEUR=75
+Accept: {{contentType}}
+
+###
+
+### ===============================================
+### PRUEBAS CON DIFERENTES MONTOS
+### ===============================================
+
+### 12. Convertir 1 USD a CLP
+GET {{baseUrl}}/convertir-usd?montoUSD=1
+Accept: {{contentType}}
+
+###
+
+### 13. Convertir 10 USD a CLP
+GET {{baseUrl}}/convertir-usd?montoUSD=10
+Accept: {{contentType}}
+
+###
+
+### 14. Convertir 1000 USD a CLP
+GET {{baseUrl}}/convertir-usd?montoUSD=1000
+Accept: {{contentType}}
+
+###
+
+### 15. Convertir 1 EUR a CLP
+GET {{baseUrl}}/convertir-eur?montoEUR=1
+Accept: {{contentType}}
+
+###
+
+### 16. Convertir 100 EUR a CLP
+GET {{baseUrl}}/convertir-eur?montoEUR=100
+Accept: {{contentType}}
+
+###
+
+### ===============================================
+### PRUEBAS DE ERROR - CASOS LÍMITE
+### ===============================================
+
+### 17. Intentar convertir con moneda inexistente (debería dar error)
+GET {{baseUrl}}/convertir/JPY?monto=100
+Accept: {{contentType}}
+
+###
+
+### 18. Intentar obtener tasa de moneda inexistente
+GET {{baseUrl}}/tasa-cambio/JPY
+Accept: {{contentType}}
+
+###
+
+### 19. Convertir con monto cero
+GET {{baseUrl}}/convertir-usd?montoUSD=0
+Accept: {{contentType}}
+
+###
+
+### 20. Convertir con monto negativo
+GET {{baseUrl}}/convertir-usd?montoUSD=-10
+Accept: {{contentType}}
+
+###
+
+### ===============================================
+### PRUEBAS DE CONEXIÓN AL BANCO CENTRAL
+### ===============================================
+
+### 21. Verificar que se obtienen tasas reales del Banco Central
+### (Esta prueba mostrará si la conexión al Banco Central funciona)
+GET {{baseUrl}}/tasas-cambio
+Accept: {{contentType}}
+
+###
+
+### 22. Comparar tasas obtenidas vs datos de respaldo
+### (Si la API del Banco Central falla, debería usar datos de respaldo)
+GET {{baseUrl}}/tasa-cambio
+Accept: {{contentType}}
+
+### 

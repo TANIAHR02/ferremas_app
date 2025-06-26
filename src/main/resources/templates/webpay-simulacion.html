@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulación WebPay - Ferremas</title>
+    <link rel="stylesheet" href="/css/estilo.css">
+    <style>
+        .simulation-result {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+        
+        .success {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+        
+        .failed, .timeout {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+        
+        .error {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border: 2px solid #ffc107;
+            color: #856404;
+        }
+        
+        .transaction-details {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #495057;
+        }
+        
+        .detail-value {
+            color: #6c757d;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        
+        .status-authorized {
+            background: #28a745;
+            color: white;
+        }
+        
+        .status-failed, .status-timeout {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .status-pending {
+            background: #ffc107;
+            color: #212529;
+        }
+        
+        .action-buttons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-simulation {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--gray-500);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+        
+        .simulation-info {
+            background: rgba(0, 123, 255, 0.1);
+            border: 1px solid #007bff;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .simulation-info h3 {
+            margin: 0 0 0.5rem 0;
+            color: #007bff;
+        }
+        
+        .simulation-info p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="nav-brand">
+                    <img src="/img/logo.png" alt="Ferremas Logo">
+                    <span>Ferremas</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="/productos" class="nav-link">Productos</a></li>
+                    <li><a href="/carrito" class="nav-link">Carrito</a></li>
+                    <li><a href="/quienes-somos" class="nav-link">¿Quiénes Somos?</a></li>
+                    <li><a href="/login" class="nav-link">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 3rem 0;">
+        <div class="simulation-info">
+            <h3>🧪 Simulación WebPay</h3>
+            <p>Esta es una simulación del proceso de pago WebPay para pruebas. No se realizan transacciones reales.</p>
+        </div>
+
+        <div class="simulation-result" th:class="${status}">
+            <!-- Pago Exitoso -->
+            <div th:if="${status} == 'authorized'">
+                <div class="status-badge status-authorized">✅ Pago Autorizado</div>
+                <h1>¡Pago Procesado Exitosamente!</h1>
+                <p>Tu transacción ha sido autorizada por el banco.<br>Gracias por tu compra en Ferremas.</p>
+                
+                <div class="transaction-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Token de Transacción:</span>
+                        <span class="detail-value" th:text="${token}">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Orden de Compra:</span>
+                        <span class="detail-value" th:text="${orden}">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Monto:</span>
+                        <span class="detail-value">$<span th:text="${#numbers.formatDecimal(monto, 0, 'COMMA', 0, 'POINT')}">-</span></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Código de Autorización:</span>
+                        <span class="detail-value" th:text="${codigoAutorizacion}">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Últimos 4 dígitos:</span>
+                        <span class="detail-value" th:text="${ultimosDigitos}">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pago Fallido -->
+            <div th:if="${status} == 'failed'">
+                <div class="status-badge status-failed">❌ Pago Rechazado</div>
+                <h1>Pago No Procesado</h1>
+                <p>Tu transacción ha sido rechazada por el banco.<br>Por favor, intenta con otra tarjeta o método de pago.</p>
+                
+                <div class="transaction-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Token de Transacción:</span>
+                        <span class="detail-value" th:text="${token}">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Orden de Compra:</span>
+                        <span class="detail-value" th:text="${orden}">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Monto:</span>
+                        <span class="detail-value">$<span th:text="${#numbers.formatDecimal(monto, 0, 'COMMA', 0, 'POINT')}">-</span></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Motivo del Rechazo:</span>
+                        <span class="detail-value" th:text="${errorMessage}">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeout -->
+            <div th:if="${status} == 'timeout'">
+                <div class="status-badge status-timeout">⏰ Tiempo Agotado</div>
+                <h1>Tiempo de Espera Agotado</h1>
+                <p>La transacción ha excedido el tiempo límite.<br>Por favor, intenta nuevamente.</p>
+                
+                <div class="transaction-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Token de Transacción:</span>
+                        <span class="detail-value" th:text="${token}">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Orden de Compra:</span>
+                        <span class="detail-value" th:text="${orden}">-</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Monto:</span>
+                        <span class="detail-value">$<span th:text="${#numbers.formatDecimal(monto, 0, 'COMMA', 0, 'POINT')}">-</span></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Motivo:</span>
+                        <span class="detail-value" th:text="${errorMessage}">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error -->
+            <div th:if="${status} == 'error'">
+                <div class="status-badge status-failed">⚠️ Error</div>
+                <h1>Error en la Transacción</h1>
+                <p>Ha ocurrido un error al procesar tu pago.<br>Por favor, contacta soporte técnico.</p>
+                
+                <div class="transaction-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Error:</span>
+                        <span class="detail-value" th:text="${error}">-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="/api/webpay/simulate/panel" class="btn-simulation btn-primary">
+                🎛️ Panel de Control
+            </a>
+            <a href="/carrito" class="btn-simulation btn-secondary">
+                🛒 Volver al Carrito
+            </a>
+            <a href="/productos" class="btn-simulation btn-success">
+                🛍️ Seguir Comprando
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // Función para copiar token al portapapeles
+        function copyToken() {
+            const token = document.querySelector('.detail-value').textContent;
+            navigator.clipboard.writeText(token).then(() => {
+                alert('Token copiado al portapapeles');
+            });
+        }
+        
+        // Auto-redirect después de 10 segundos (opcional)
+        setTimeout(() => {
+            console.log('Simulación completada. Redirigiendo en 10 segundos...');
+        }, 10000);
+    </script>
+</body>
+</html> 
