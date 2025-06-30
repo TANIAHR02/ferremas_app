@@ -38,7 +38,7 @@
                 </div>
                 
                 <div class="card-body">
-                    <form action="/registro" method="post" class="register-form">
+                    <form id="registroForm" class="register-form">
                         <div class="grid grid-cols-2" style="gap: 1rem;">
                             <div class="form-group">
                                 <label for="nombre" class="form-label">Nombre</label>
@@ -139,6 +139,8 @@
                                 Crear cuenta
                             </button>
                         </div>
+                        
+                        <div id="mensaje" class="alert" style="display: none; margin-top: 1rem;"></div>
                     </form>
                 </div>
                 
@@ -162,5 +164,78 @@
             </p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('registroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                nombre: document.getElementById('nombre').value,
+                apellido: document.getElementById('apellido').value,
+                email: document.getElementById('email').value,
+                telefono: document.getElementById('telefono').value,
+                direccion: document.getElementById('direccion').value,
+                password: document.getElementById('password').value,
+                confirmPassword: document.getElementById('confirmPassword').value
+            };
+            
+            // Validar que las contraseñas coincidan
+            if (formData.password !== formData.confirmPassword) {
+                mostrarMensaje('Las contraseñas no coinciden', 'error');
+                return;
+            }
+            
+            // Enviar datos a la API
+            fetch('/api/auth/registro', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    mostrarMensaje('¡Registro exitoso! Redirigiendo...', 'success');
+                    // Guardar el token en localStorage
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('usuario', JSON.stringify(data.usuario));
+                    
+                    // Redirigir después de 2 segundos
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 2000);
+                } else {
+                    mostrarMensaje(data.error || 'Error en el registro', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                mostrarMensaje('Error de conexión', 'error');
+            });
+        });
+        
+        function mostrarMensaje(texto, tipo) {
+            const mensajeDiv = document.getElementById('mensaje');
+            mensajeDiv.textContent = texto;
+            mensajeDiv.style.display = 'block';
+            
+            if (tipo === 'success') {
+                mensajeDiv.className = 'alert alert-success';
+                mensajeDiv.style.backgroundColor = '#d4edda';
+                mensajeDiv.style.color = '#155724';
+                mensajeDiv.style.border = '1px solid #c3e6cb';
+            } else {
+                mensajeDiv.className = 'alert alert-danger';
+                mensajeDiv.style.backgroundColor = '#f8d7da';
+                mensajeDiv.style.color = '#721c24';
+                mensajeDiv.style.border = '1px solid #f5c6cb';
+            }
+            
+            mensajeDiv.style.padding = '0.75rem 1.25rem';
+            mensajeDiv.style.borderRadius = '0.25rem';
+            mensajeDiv.style.marginTop = '1rem';
+        }
+    </script>
 </body>
 </html>

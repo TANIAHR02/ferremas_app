@@ -252,9 +252,9 @@
         // Iniciar pago con WebPay
         function iniciarPagoWebPay() {
             const pagoData = {
-                monto: cartData.total,
                 pedidoId: Date.now(), // ID temporal del pedido
-                descripcion: 'Compra Ferremas - Herramientas y materiales'
+                monto: cartData.total,
+                metodoPago: 'DEBITO' // Método de pago por defecto
             };
 
             // Llamada al backend para iniciar pago WebPay

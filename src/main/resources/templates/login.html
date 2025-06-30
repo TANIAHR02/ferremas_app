@@ -38,13 +38,13 @@
                 </div>
                 
                 <div class="card-body">
-                    <form action="/login" method="post" class="login-form">
+                    <form id="loginForm" class="login-form">
                         <div class="form-group">
-                            <label for="username" class="form-label">Correo electrónico</label>
+                            <label for="email" class="form-label">Correo electrónico</label>
                             <input 
                                 type="email" 
-                                id="username" 
-                                name="username" 
+                                id="email" 
+                                name="email" 
                                 class="form-input" 
                                 placeholder="tu@email.com" 
                                 required
@@ -68,6 +68,8 @@
                                 Iniciar Sesión
                             </button>
                         </div>
+                        
+                        <div id="mensaje" class="alert" style="display: none; margin-top: 1rem;"></div>
                     </form>
                 </div>
                 
@@ -87,9 +89,71 @@
     <footer style="margin-top: 4rem; padding: 2rem 0; background: var(--gray-100); text-align: center;">
         <div class="container">
             <p class="text-muted mb-0">
-                © 2024 Ferremas. Todos los derechos reservados.
+                © 2025 Ferremas. Todos los derechos reservados.
             </p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+            
+            // Enviar datos a la API
+            fetch('/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    mostrarMensaje('¡Login exitoso! Redirigiendo...', 'success');
+                    // Guardar el token en localStorage
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('usuario', JSON.stringify(data.usuario));
+                    
+                    // Redirigir después de 2 segundos
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 2000);
+                } else {
+                    mostrarMensaje(data.error || 'Credenciales inválidas', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                mostrarMensaje('Error de conexión', 'error');
+            });
+        });
+        
+        function mostrarMensaje(texto, tipo) {
+            const mensajeDiv = document.getElementById('mensaje');
+            mensajeDiv.textContent = texto;
+            mensajeDiv.style.display = 'block';
+            
+            if (tipo === 'success') {
+                mensajeDiv.className = 'alert alert-success';
+                mensajeDiv.style.backgroundColor = '#d4edda';
+                mensajeDiv.style.color = '#155724';
+                mensajeDiv.style.border = '1px solid #c3e6cb';
+            } else {
+                mensajeDiv.className = 'alert alert-danger';
+                mensajeDiv.style.backgroundColor = '#f8d7da';
+                mensajeDiv.style.color = '#721c24';
+                mensajeDiv.style.border = '1px solid #f5c6cb';
+            }
+            
+            mensajeDiv.style.padding = '0.75rem 1.25rem';
+            mensajeDiv.style.borderRadius = '0.25rem';
+            mensajeDiv.style.marginTop = '1rem';
+        }
+    </script>
 </body>
 </html>
