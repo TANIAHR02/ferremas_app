@@ -15,7 +15,7 @@
 1. **Crear una nueva Collection**
    - Abre Postman
    - Crea una nueva Collection llamada "Ferremas - Cambio de Divisas"
-   - Configura la variable de entorno `baseUrl` = `http://localhost:8081/api/banco-central`
+   - Configura la variable de entorno `baseUrl` = `http://localhost:8082/api/banco-central`
 
 ### Endpoints a Probar
 
@@ -97,13 +97,13 @@ pm.test("Response is not empty", function () {
 
 #### 1. Configurar Variables de Usuario
 - **Thread Group** → **User Defined Variables**
-  - `baseUrl`: `http://localhost:8081`
+  - `baseUrl`: `http://localhost:8082`
   - `apiPath`: `/api/banco-central`
 
 #### 2. Configurar HTTP Request Defaults
 - **Config Element** → **HTTP Request Defaults**
   - **Server Name or IP**: `localhost`
-  - **Port Number**: `8081`
+  - **Port Number**: `8082`
   - **Protocol**: `http`
 
 #### 3. Configurar HTTP Header Manager
@@ -330,7 +330,7 @@ Path: ${apiPath}/convertir?montoExtranjero=100&tasaCambio=950.50
 ## 📝 Checklist de Pruebas
 
 ### ✅ Pre-Pruebas
-- [ ] Aplicación corriendo en puerto 8081
+- [ ] Aplicación corriendo en puerto 8082
 - [ ] API key del Banco Central configurada
 - [ ] Base de datos conectada
 - [ ] Herramientas de prueba instaladas
@@ -361,7 +361,7 @@ Path: ${apiPath}/convertir?montoExtranjero=100&tasaCambio=950.50
 ### Error 500 - Aplicación no responde
 ```bash
 # Verificar que esté corriendo
-curl http://localhost:8081/actuator/health
+curl http://localhost:8082/actuator/health
 ```
 
 ### Error de conexión al Banco Central

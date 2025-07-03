@@ -56,6 +56,7 @@ public class SecurityConfig {
                 .requestMatchers("/api/banco-central/**").permitAll()
                 .requestMatchers("/api/webpay/**").permitAll()
                 .requestMatchers("/api/webpay-simulation/**").permitAll()
+                .requestMatchers("/api/carrito/**").permitAll()
                 
                 // Rutas por roles específicos
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")

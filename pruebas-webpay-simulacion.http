@@ -3,11 +3,11 @@
 ### ========================================
 
 ### 1. Verificar estado actual de simulación
-GET http://localhost:8081/api/webpay-simulation/simulate/scenario
+GET http://localhost:8082/api/webpay-simulation/simulate/scenario
 Content-Type: application/json
 
 ### 2. Configurar escenario de éxito
-POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+POST http://localhost:8082/api/webpay-simulation/simulate/scenario
 Content-Type: application/json
 
 {
@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ### 3. Configurar escenario de fallo
-POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+POST http://localhost:8082/api/webpay-simulation/simulate/scenario
 Content-Type: application/json
 
 {
@@ -23,7 +23,7 @@ Content-Type: application/json
 }
 
 ### 4. Configurar escenario de timeout
-POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+POST http://localhost:8082/api/webpay-simulation/simulate/scenario
 Content-Type: application/json
 
 {
@@ -31,7 +31,7 @@ Content-Type: application/json
 }
 
 ### 5. Configurar escenario de fondos insuficientes
-POST http://localhost:8081/api/webpay-simulation/simulate/scenario
+POST http://localhost:8082/api/webpay-simulation/simulate/scenario
 Content-Type: application/json
 
 {
@@ -39,7 +39,7 @@ Content-Type: application/json
 }
 
 ### 6. Activar modo simulación
-POST http://localhost:8081/api/webpay-simulation/simulate/mode
+POST http://localhost:8082/api/webpay-simulation/simulate/mode
 Content-Type: application/json
 
 {
@@ -47,7 +47,7 @@ Content-Type: application/json
 }
 
 ### 7. Iniciar pago simulado (éxito)
-POST http://localhost:8081/api/webpay-simulation/simulate/init
+POST http://localhost:8082/api/webpay-simulation/simulate/init
 Content-Type: application/json
 
 {
@@ -57,7 +57,7 @@ Content-Type: application/json
 }
 
 ### 8. Iniciar pago simulado (fallo)
-POST http://localhost:8081/api/webpay-simulation/simulate/init
+POST http://localhost:8082/api/webpay-simulation/simulate/init
 Content-Type: application/json
 
 {
@@ -67,39 +67,39 @@ Content-Type: application/json
 }
 
 ### 9. Consultar estado de transacción (reemplazar TOKEN con el token real)
-GET http://localhost:8081/api/webpay-simulation/simulate/status/{{token}}
+GET http://localhost:8082/api/webpay-simulation/simulate/status/{{token}}
 Content-Type: application/json
 
 ### 10. Obtener todas las transacciones simuladas
-GET http://localhost:8081/api/webpay-simulation/simulate/transactions
+GET http://localhost:8082/api/webpay-simulation/simulate/transactions
 Content-Type: application/json
 
 ### 11. Limpiar todas las transacciones
-DELETE http://localhost:8081/api/webpay-simulation/simulate/transactions
+DELETE http://localhost:8082/api/webpay-simulation/simulate/transactions
 Content-Type: application/json
 
 ### 12. Acceder al panel de control (navegador)
-# GET http://localhost:8081/api/webpay-simulation/simulate/panel
+# GET http://localhost:8082/api/webpay-simulation/simulate/panel
 
 ### 13. Simular proceso de pago (navegador)
-# GET http://localhost:8081/api/webpay-simulation/simulate/{{token}}
+# GET http://localhost:8082/api/webpay-simulation/simulate/{{token}}
 
 ### ========================================
 ### EJEMPLOS DE USO CON CURL
 ### ========================================
 
 ### Configurar escenario de éxito
-# curl -X POST http://localhost:8081/api/webpay-simulation/simulate/scenario \
+# curl -X POST http://localhost:8082/api/webpay-simulation/simulate/scenario \
 #   -H "Content-Type: application/json" \
 #   -d '{"scenario": "SUCCESS"}'
 
 ### Iniciar pago simulado
-# curl -X POST http://localhost:8081/api/webpay-simulation/simulate/init \
+# curl -X POST http://localhost:8082/api/webpay-simulation/simulate/init \
 #   -H "Content-Type: application/json" \
 #   -d '{"pedidoId": 12345, "monto": 25000.0, "metodoPago": "WEBPAY"}'
 
 ### Consultar estado
-# curl -X GET http://localhost:8081/api/webpay-simulation/simulate/status/TOKEN_AQUI
+# curl -X GET http://localhost:8082/api/webpay-simulation/simulate/status/TOKEN_AQUI
 
 ### Obtener transacciones
-# curl -X GET http://localhost:8081/api/webpay-simulation/simulate/transactions 
+# curl -X GET http://localhost:8082/api/webpay-simulation/simulate/transactions 

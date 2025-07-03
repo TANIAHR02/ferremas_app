@@ -84,9 +84,19 @@ public class AuthController {
             usuario.setEstado(true);
 
             // Asignar rol
-            Rol rol = new Rol();
-            rol.setId(1); // CLIENTE por defecto
-            rol.setNombre("CLIENTE");
+            Rol rol;
+            if (registroRequest.getRolId() != null) {
+                rol = usuarioService.obtenerRolPorId(registroRequest.getRolId());
+                if (rol == null) {
+                    rol = new Rol();
+                    rol.setId(1); // CLIENTE por defecto
+                    rol.setNombre("CLIENTE");
+                }
+            } else {
+                rol = new Rol();
+                rol.setId(1); // CLIENTE por defecto
+                rol.setNombre("CLIENTE");
+            }
             usuario.setRol(rol);
 
             // Guardar usuario

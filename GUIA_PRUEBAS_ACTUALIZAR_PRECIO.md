@@ -4,7 +4,7 @@
 
 Esta guía describe cómo probar los endpoints PATCH para actualizar precios de productos en la aplicación Ferremas. Los endpoints implementan un sistema de historial de precios que mantiene un registro completo de todos los cambios de precios.
 
-**Configuración**: Puerto 8081
+**Configuración**: Puerto 8082
 
 ## Endpoints Disponibles
 
@@ -162,7 +162,7 @@ GET /api/productos/codigo/{codigo}/historial-precios
 
 ### 1. Usando Postman (Recomendado)
 1. Importa el archivo `Ferremas-Actualizar-Precios.postman_collection.json`
-2. La variable `baseUrl` ya está configurada para puerto 8081
+2. La variable `baseUrl` ya está configurada para puerto 8082
 3. Ejecuta las pruebas en el siguiente orden:
    - **Verificar Aplicación** (para confirmar que está ejecutándose)
    - **Actualizar Precio por ID**
@@ -182,13 +182,13 @@ GET /api/productos/codigo/{codigo}/historial-precios
 3. Ejecuta cada prueba haciendo clic en "Send Request"
 
 ### 3. Usando el Script Batch
-1. Asegúrate de que la aplicación esté ejecutándose en puerto 8081
+1. Asegúrate de que la aplicación esté ejecutándose en puerto 8082
 2. Ejecuta `test-actualizar-precio.bat`
 3. Revisa los resultados en la consola
 
 ### 4. Usando cURL Manualmente
 ```bash
-curl -X PATCH http://localhost:8081/api/productos/1/precio \
+curl -X PATCH http://localhost:8082/api/productos/1/precio \
   -H "Content-Type: application/json" \
   -d '{"nuevoPrecio": 18990.00, "motivo": "Ajuste de precios", "usuario": "admin@ferremas.cl"}'
 ```
@@ -235,7 +235,7 @@ curl -X PATCH http://localhost:8081/api/productos/1/precio \
 ### Error: "Producto no encontrado"
 - Verificar que el ID o código existe
 - Revisar la base de datos
-- Confirmar que la aplicación está ejecutándose en puerto 8081
+- Confirmar que la aplicación está ejecutándose en puerto 8082
 
 ### Error: "El precio debe ser mayor a 0"
 - Verificar el formato del JSON
@@ -248,13 +248,13 @@ curl -X PATCH http://localhost:8081/api/productos/1/precio \
 - Confirmar que el servicio de historial funciona
 
 ### Error de Conexión
-- Verificar que la aplicación esté ejecutándose en puerto 8081
+- Verificar que la aplicación esté ejecutándose en puerto 8082
 - Confirmar que no hay firewall bloqueando el puerto
 - Revisar logs de la aplicación para errores de inicio
 
 ## Notas Importantes
 
-1. **Puerto 8081**: Todos los endpoints usan el puerto 8081
+1. **Puerto 8082**: Todos los endpoints usan el puerto 8082
 2. **Método PATCH**: Se usa específicamente para actualizaciones parciales
 3. **Historial Automático**: Cada cambio genera un registro en el historial
 4. **Validaciones**: El sistema valida tanto el precio como la existencia del producto

@@ -415,7 +415,7 @@
                             </td>
                             <td th:text="${#dates.format(#dates.create(entry.value.createdAt), 'dd/MM/yyyy HH:mm')}">-</td>
                             <td>
-                                <a th:href="@{'/api/webpay/simulate/' + ${entry.key}}" 
+                                <a th:href="@{'/api/webpay-simulation/simulate/' + ${entry.key}}" 
                                    class="btn-test" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;">
                                     Ver
                                 </a>
@@ -445,7 +445,7 @@
         }
         
         function applyScenario() {
-            fetch('/api/webpay/simulate/scenario', {
+            fetch('/api/webpay-simulation/simulate/scenario', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -482,7 +482,7 @@
                 descripcion: 'Prueba de simulación WebPay'
             };
             
-            fetch('/api/webpay/simulate/init', {
+            fetch('/api/webpay-simulation/simulate/init', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -493,7 +493,7 @@
             .then(data => {
                 if (data.token) {
                     // Redirigir a la simulación
-                    window.location.href = `/api/webpay/simulate/${data.token}`;
+                    window.location.href = `/api/webpay-simulation/simulate/${data.token}`;
                 } else {
                     alert('❌ Error al iniciar la prueba: ' + (data.error || 'Error desconocido'));
                 }
@@ -506,7 +506,7 @@
         
         function clearTransactions() {
             if (confirm('¿Estás seguro de que quieres limpiar todo el historial de transacciones?')) {
-                fetch('/api/webpay/simulate/transactions', {
+                fetch('/api/webpay-simulation/simulate/transactions', {
                     method: 'DELETE'
                 })
                 .then(response => response.json())

@@ -2,7 +2,7 @@
 
 ## 🎉 Estado: FUNCIONANDO CORRECTAMENTE
 
-La simulación de WebPay está completamente operativa en el puerto 8081.
+La simulación de WebPay está completamente operativa en el puerto 8082.
 
 ## 📋 Pruebas Realizadas
 
@@ -29,7 +29,7 @@ La simulación de WebPay está completamente operativa en el puerto 8081.
 - **Respuesta:** `{"count":1,"transactions":{"d0e41824-047a-4957-971c-cb7bb45da8c0":{"token":"d0e41824-047a-4957-971c-cb7bb45da8c0","buyOrder":"12345","amount":25000.0,"status":"PENDING","authorizationCode":null,"lastDigits":null,"createdAt":1750914044749,"errorMessage":null}}}`
 
 ### ✅ 5. Panel de Control Web
-- **URL:** `http://localhost:8081/api/webpay-simulation/simulate/panel`
+- **URL:** `http://localhost:8082/api/webpay-simulation/simulate/panel`
 - **Resultado:** ✅ Funcionando
 - **Características:**
   - Selector de escenarios (SUCCESS, FAIL, TIMEOUT, INSUFFICIENT_FUNDS)
@@ -38,7 +38,7 @@ La simulación de WebPay está completamente operativa en el puerto 8081.
   - Botones de limpieza de historial
 
 ### ✅ 6. Simulación Web
-- **URL:** `http://localhost:8081/api/webpay-simulation/simulate/{token}`
+- **URL:** `http://localhost:8082/api/webpay-simulation/simulate/{token}`
 - **Resultado:** ✅ Funcionando
 - **Características:**
   - Página de resultado de simulación
@@ -49,17 +49,17 @@ La simulación de WebPay está completamente operativa en el puerto 8081.
 
 ### Panel de Control
 ```
-http://localhost:8081/api/webpay-simulation/simulate/panel
+http://localhost:8082/api/webpay-simulation/simulate/panel
 ```
 
 ### Simulación de Pago (reemplazar TOKEN)
 ```
-http://localhost:8081/api/webpay-simulation/simulate/TOKEN_AQUI
+http://localhost:8082/api/webpay-simulation/simulate/TOKEN_AQUI
 ```
 
 ### Ejemplo con token real:
 ```
-http://localhost:8081/api/webpay-simulation/simulate/d0e41824-047a-4957-971c-cb7bb45da8c0
+http://localhost:8082/api/webpay-simulation/simulate/d0e41824-047a-4957-971c-cb7bb45da8c0
 ```
 
 ## 🔧 Endpoints Disponibles
@@ -89,7 +89,7 @@ http://localhost:8081/api/webpay-simulation/simulate/d0e41824-047a-4957-971c-cb7
 ## 📝 Cómo Usar
 
 ### Desde el Panel Web (Recomendado)
-1. Abre: `http://localhost:8081/api/webpay-simulation/simulate/panel`
+1. Abre: `http://localhost:8082/api/webpay-simulation/simulate/panel`
 2. Selecciona el escenario deseado
 3. Ingresa monto y ID de pedido
 4. Haz clic en "Iniciar Prueba de Pago"
@@ -98,17 +98,17 @@ http://localhost:8081/api/webpay-simulation/simulate/d0e41824-047a-4957-971c-cb7
 ### Desde API (Programático)
 ```bash
 # 1. Configurar escenario
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/scenario \
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/scenario \
   -H "Content-Type: application/json" \
   -d '{"scenario": "SUCCESS"}'
 
 # 2. Iniciar transacción
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/init \
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/init \
   -H "Content-Type: application/json" \
   -d '{"pedidoId": 12345, "monto": 25000.0, "metodoPago": "WEBPAY"}'
 
 # 3. Ver transacciones
-curl -X GET http://localhost:8081/api/webpay-simulation/simulate/transactions
+curl -X GET http://localhost:8082/api/webpay-simulation/simulate/transactions
 ```
 
 ## 🎉 Conclusión

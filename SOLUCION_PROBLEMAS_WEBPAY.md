@@ -6,16 +6,16 @@
 
 #### 1. Verificar que la aplicación esté ejecutándose
 ```bash
-# Verificar si hay un proceso en el puerto 8081
-netstat -ano | findstr :8081
+# Verificar si hay un proceso en el puerto 8082
+netstat -ano | findstr :8082
 ```
 
-**Resultado esperado:** Debe mostrar un proceso escuchando en el puerto 8081.
+**Resultado esperado:** Debe mostrar un proceso escuchando en el puerto 8082.
 
 #### 2. Verificar que la aplicación responda
 ```bash
 # Probar endpoint básico
-curl -X GET http://localhost:8081/api/test/health
+curl -X GET http://localhost:8082/api/test/health
 ```
 
 **Resultado esperado:**
@@ -30,7 +30,7 @@ curl -X GET http://localhost:8081/api/test/health
 #### 3. Verificar endpoints de simulación
 ```bash
 # Probar endpoint de estado de simulación
-curl -X GET http://localhost:8081/api/webpay-simulation/simulate/scenario
+curl -X GET http://localhost:8082/api/webpay-simulation/simulate/scenario
 ```
 
 **Resultado esperado:**
@@ -44,7 +44,7 @@ curl -X GET http://localhost:8081/api/webpay-simulation/simulate/scenario
 #### 4. Probar iniciar transacción
 ```bash
 # Iniciar pago simulado
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/init \
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/init \
   -H "Content-Type: application/json" \
   -d "{\"pedidoId\": 12345, \"monto\": 25000.0, \"metodoPago\": \"WEBPAY\"}"
 ```
@@ -62,7 +62,7 @@ curl -X POST http://localhost:8081/api/webpay-simulation/simulate/init \
 #### 5. Verificar transacciones almacenadas
 ```bash
 # Obtener todas las transacciones
-curl -X GET http://localhost:8081/api/webpay-simulation/simulate/transactions
+curl -X GET http://localhost:8082/api/webpay-simulation/simulate/transactions
 ```
 
 **Resultado esperado:**
@@ -125,24 +125,24 @@ diagnostico-webpay.bat
 #### Verificación Manual
 1. **Verificar aplicación:**
    ```bash
-   curl -X GET http://localhost:8081/api/test/health
+   curl -X GET http://localhost:8082/api/test/health
    ```
 
 2. **Verificar simulación:**
    ```bash
-   curl -X GET http://localhost:8081/api/webpay-simulation/simulate/scenario
+   curl -X GET http://localhost:8082/api/webpay-simulation/simulate/scenario
    ```
 
 3. **Probar transacción:**
    ```bash
-   curl -X POST http://localhost:8081/api/webpay-simulation/simulate/init \
+   curl -X POST http://localhost:8082/api/webpay-simulation/simulate/init \
      -H "Content-Type: application/json" \
      -d "{\"pedidoId\": 99999, \"monto\": 10000.0, \"metodoPago\": \"WEBPAY\"}"
    ```
 
 4. **Verificar historial:**
    ```bash
-   curl -X GET http://localhost:8081/api/webpay-simulation/simulate/transactions
+   curl -X GET http://localhost:8082/api/webpay-simulation/simulate/transactions
    ```
 
 ### 🌐 Verificación Web
@@ -150,7 +150,7 @@ diagnostico-webpay.bat
 #### Panel de Control
 Abre en tu navegador:
 ```
-http://localhost:8081/api/webpay-simulation/simulate/panel
+http://localhost:8082/api/webpay-simulation/simulate/panel
 ```
 
 **Deberías ver:**
@@ -161,7 +161,7 @@ http://localhost:8081/api/webpay-simulation/simulate/panel
 #### Simulación de Pago
 Después de iniciar una transacción, abre:
 ```
-http://localhost:8081/api/webpay-simulation/simulate/{token}
+http://localhost:8082/api/webpay-simulation/simulate/{token}
 ```
 
 **Deberías ver:**
@@ -171,7 +171,7 @@ http://localhost:8081/api/webpay-simulation/simulate/{token}
 
 ### 📋 Checklist de Verificación
 
-- [ ] La aplicación está ejecutándose en el puerto 8081
+- [ ] La aplicación está ejecutándose en el puerto 8082
 - [ ] El endpoint `/api/test/health` responde correctamente
 - [ ] El endpoint `/api/webpay-simulation/simulate/scenario` responde
 - [ ] Se puede configurar un escenario
@@ -195,7 +195,7 @@ http://localhost:8081/api/webpay-simulation/simulate/{token}
 
 3. **Verificar configuración:**
    - Revisar `application.properties`
-   - Verificar que el puerto 8081 esté libre
+   - Verificar que el puerto 8082 esté libre
 
 4. **Verificar dependencias:**
    - Asegurar que MySQL esté ejecutándose

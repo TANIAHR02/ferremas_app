@@ -2,6 +2,7 @@ package cl.duoc.ferremasapp.service.Impl;
 
 import cl.duoc.ferremasapp.model.Usuario;
 import cl.duoc.ferremasapp.repository.UsuarioRepository;
+import cl.duoc.ferremasapp.repository.RolRepository;
 import cl.duoc.ferremasapp.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +17,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private RolRepository rolRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -130,6 +134,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public List<Usuario> buscarPorNombre(String nombre) {
         return usuarioRepository.findByNombreContainingIgnoreCase(nombre);
+    }
+
+    @Override
+    public cl.duoc.ferremasapp.model.Rol obtenerRolPorId(Long rolId) {
+        return rolRepository.findById(rolId.intValue()).orElse(null);
     }
 
     private String generarPasswordTemporal() {

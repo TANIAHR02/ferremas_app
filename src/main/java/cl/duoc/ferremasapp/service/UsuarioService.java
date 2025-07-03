@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import cl.duoc.ferremasapp.model.Usuario;
+import cl.duoc.ferremasapp.model.Rol;
 
 public interface UsuarioService {
     Usuario registrarUsuario(Usuario usuario);
@@ -20,4 +21,7 @@ public interface UsuarioService {
     List<Usuario> buscarUsuariosActivos();
     boolean activarDesactivarUsuario(Integer usuarioId);
     List<Usuario> buscarPorNombre(String nombre);
+
+    // Buscar rol por ID
+    Rol obtenerRolPorId(Long rolId);
 }

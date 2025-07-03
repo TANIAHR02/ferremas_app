@@ -8,8 +8,8 @@ Esta guía te ayudará a verificar que la simulación de WebPay esté funcionand
 
 ### 1. Verificar que la aplicación esté ejecutándose
 ```bash
-# Asegúrate de que la aplicación esté corriendo en el puerto 8081
-http://localhost:8081
+# Asegúrate de que la aplicación esté corriendo en el puerto 8082
+http://localhost:8082
 ```
 
 ### 2. Ejecutar pruebas automáticas
@@ -20,7 +20,7 @@ test-webpay-simulacion.bat
 
 ### 3. Acceder al panel de control
 ```
-http://localhost:8081/api/webpay-simulation/simulate/panel
+http://localhost:8082/api/webpay-simulation/simulate/panel
 ```
 
 ## 🔧 Endpoints Disponibles
@@ -89,26 +89,26 @@ http://localhost:8081/api/webpay-simulation/simulate/panel
 
 #### 1. Configurar escenario de éxito
 ```bash
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/scenario \
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/scenario \
   -H "Content-Type: application/json" \
   -d '{"scenario": "SUCCESS"}'
 ```
 
 #### 2. Iniciar pago simulado
 ```bash
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/init \
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/init \
   -H "Content-Type: application/json" \
   -d '{"pedidoId": 12345, "monto": 25000.0, "metodoPago": "WEBPAY"}'
 ```
 
 #### 3. Consultar estado (reemplazar TOKEN con el token real)
 ```bash
-curl -X GET http://localhost:8081/api/webpay-simulation/simulate/status/TOKEN_AQUI
+curl -X GET http://localhost:8082/api/webpay-simulation/simulate/status/TOKEN_AQUI
 ```
 
 #### 4. Obtener todas las transacciones
 ```bash
-curl -X GET http://localhost:8081/api/webpay-simulation/simulate/transactions
+curl -X GET http://localhost:8082/api/webpay-simulation/simulate/transactions
 ```
 
 ### Usando el archivo HTTP
@@ -120,7 +120,7 @@ curl -X GET http://localhost:8081/api/webpay-simulation/simulate/transactions
 
 ### Acceso
 ```
-http://localhost:8081/api/webpay-simulation/simulate/panel
+http://localhost:8082/api/webpay-simulation/simulate/panel
 ```
 
 ### Funcionalidades
@@ -159,7 +159,7 @@ http://localhost:8081/api/webpay-simulation/simulate/panel
 
 ### Error: "Connection refused"
 - Verifica que la aplicación esté ejecutándose
-- Confirma que el puerto 8081 esté disponible
+- Confirma que el puerto 8082 esté disponible
 
 ### Error: "404 Not Found"
 - Verifica que los endpoints estén correctamente mapeados

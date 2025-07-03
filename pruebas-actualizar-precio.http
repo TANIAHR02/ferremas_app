@@ -3,7 +3,7 @@
 # ========================================
 # CONFIGURACIÓN BASE
 # ========================================
-@baseUrl = http://localhost:8081
+@baseUrl = http://localhost:8082
 @contentType = application/json
 
 # ========================================

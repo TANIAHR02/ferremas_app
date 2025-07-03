@@ -145,9 +145,9 @@ webpay.commerce.code=tu_commerce_code
 ```
 
 ### 5. Acceder a la Aplicación
-- **Aplicación**: http://localhost:8081
-- **API Documentation**: http://localhost:8081/swagger-ui.html
-- **Actuator**: http://localhost:8081/actuator
+- **Aplicación**: http://localhost:8082
+- **API Documentation**: http://localhost:8082/swagger-ui.html
+- **Actuator**: http://localhost:8082/actuator
 
 ## 🔑 Autenticación y Uso
 
@@ -235,7 +235,7 @@ Authorization: Bearer <token_jwt>
 
 ### Pruebas Manuales
 - **Postman**: Colección incluida en el proyecto
-- **Swagger UI**: http://localhost:8081/swagger-ui.html
+- **Swagger UI**: http://localhost:8082/swagger-ui.html
 - **JMeter**: Scripts de prueba de rendimiento incluidos
 
 ## 📊 Monitoreo y Métricas
@@ -295,7 +295,7 @@ java -jar target/ferremasapp-0.0.1-SNAPSHOT.jar
 ```dockerfile
 FROM openjdk:17-jdk-slim
 COPY target/ferremasapp-0.0.1-SNAPSHOT.jar app.jar
-EXPOSE 8081
+EXPOSE 8082
 ENTRYPOINT ["java","-jar","/app.jar"]
 ```
 
@@ -333,7 +333,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 ## 📞 Soporte
 
 - **Email**: soporte@ferremas.com
-- **Documentación**: http://localhost:8081/swagger-ui.html
+- **Documentación**: http://localhost:8082/swagger-ui.html
 - **Issues**: GitHub Issues
 
 ---

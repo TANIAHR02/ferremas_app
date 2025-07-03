@@ -58,26 +58,26 @@ Esta guía describe los 4 escenarios básicos de simulación de WebPay disponibl
 
 ### 1. Configurar Escenario
 ```bash
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/scenario \
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/scenario \
   -H "Content-Type: application/json" \
   -d '{"scenario":"SUCCESS"}'
 ```
 
 ### 2. Iniciar Transacción
 ```bash
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/init \
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/init \
   -H "Content-Type: application/json" \
   -d '{"pedidoId":1001,"monto":25000}'
 ```
 
 ### 3. Consultar Estado
 ```bash
-curl http://localhost:8081/api/webpay-simulation/simulate/status/{TOKEN}
+curl http://localhost:8082/api/webpay-simulation/simulate/status/{TOKEN}
 ```
 
 ### 4. Ver Resultado Web
 ```
-http://localhost:8081/api/webpay-simulation/simulate/{TOKEN}
+http://localhost:8082/api/webpay-simulation/simulate/{TOKEN}
 ```
 
 ## Comandos para Cada Escenario
@@ -85,59 +85,59 @@ http://localhost:8081/api/webpay-simulation/simulate/{TOKEN}
 ### PAGO EXITOSO
 ```bash
 # Configurar escenario
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/scenario -H "Content-Type: application/json" -d "{\"scenario\":\"SUCCESS\"}"
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/scenario -H "Content-Type: application/json" -d "{\"scenario\":\"SUCCESS\"}"
 
 # Generar token
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/init -H "Content-Type: application/json" -d "{\"pedidoId\":1001,\"monto\":25000}"
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/init -H "Content-Type: application/json" -d "{\"pedidoId\":1001,\"monto\":25000}"
 ```
 
 ### PAGO FALLIDO
 ```bash
 # Configurar escenario
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/scenario -H "Content-Type: application/json" -d "{\"scenario\":\"FAIL\"}"
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/scenario -H "Content-Type: application/json" -d "{\"scenario\":\"FAIL\"}"
 
 # Generar token
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/init -H "Content-Type: application/json" -d "{\"pedidoId\":1002,\"monto\":15000}"
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/init -H "Content-Type: application/json" -d "{\"pedidoId\":1002,\"monto\":15000}"
 ```
 
 ### TIMEOUT
 ```bash
 # Configurar escenario
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/scenario -H "Content-Type: application/json" -d "{\"scenario\":\"TIMEOUT\"}"
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/scenario -H "Content-Type: application/json" -d "{\"scenario\":\"TIMEOUT\"}"
 
 # Generar token
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/init -H "Content-Type: application/json" -d "{\"pedidoId\":1003,\"monto\":30000}"
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/init -H "Content-Type: application/json" -d "{\"pedidoId\":1003,\"monto\":30000}"
 ```
 
 ### FONDOS INSUFICIENTES
 ```bash
 # Configurar escenario
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/scenario -H "Content-Type: application/json" -d "{\"scenario\":\"INSUFFICIENT_FUNDS\"}"
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/scenario -H "Content-Type: application/json" -d "{\"scenario\":\"INSUFFICIENT_FUNDS\"}"
 
 # Generar token
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/init -H "Content-Type: application/json" -d "{\"pedidoId\":1004,\"monto\":50000}"
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/init -H "Content-Type: application/json" -d "{\"pedidoId\":1004,\"monto\":50000}"
 ```
 
 ## Comandos Útiles
 
 ### Obtener Escenarios Disponibles
 ```bash
-curl http://localhost:8081/api/webpay-simulation/simulate/scenarios
+curl http://localhost:8082/api/webpay-simulation/simulate/scenarios
 ```
 
 ### Obtener Escenario Actual
 ```bash
-curl http://localhost:8081/api/webpay-simulation/simulate/scenario
+curl http://localhost:8082/api/webpay-simulation/simulate/scenario
 ```
 
 ### Obtener Transacciones
 ```bash
-curl http://localhost:8081/api/webpay-simulation/simulate/transactions
+curl http://localhost:8082/api/webpay-simulation/simulate/transactions
 ```
 
 ### Limpiar Transacciones
 ```bash
-curl -X DELETE http://localhost:8081/api/webpay-simulation/simulate/transactions
+curl -X DELETE http://localhost:8082/api/webpay-simulation/simulate/transactions
 ```
 
 ## Archivos de Prueba
@@ -149,28 +149,28 @@ curl -X DELETE http://localhost:8081/api/webpay-simulation/simulate/transactions
 - `test-4-escenarios-webpay.bat`: Ejecuta automáticamente los 4 escenarios
 
 ### Panel de Control Web
-- `http://localhost:8081/api/webpay-simulation/simulate/panel`: Interfaz web para controlar la simulación
+- `http://localhost:8082/api/webpay-simulation/simulate/panel`: Interfaz web para controlar la simulación
 
 ## Ejemplo de Uso Completo
 
 ```bash
 # 1. Verificar que la aplicación esté ejecutándose
-curl http://localhost:8081/api/test/health
+curl http://localhost:8082/api/test/health
 
 # 2. Obtener escenarios disponibles
-curl http://localhost:8081/api/webpay-simulation/simulate/scenarios
+curl http://localhost:8082/api/webpay-simulation/simulate/scenarios
 
 # 3. Configurar escenario de éxito
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/scenario -H "Content-Type: application/json" -d "{\"scenario\":\"SUCCESS\"}"
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/scenario -H "Content-Type: application/json" -d "{\"scenario\":\"SUCCESS\"}"
 
 # 4. Generar token
-curl -X POST http://localhost:8081/api/webpay-simulation/simulate/init -H "Content-Type: application/json" -d "{\"pedidoId\":1001,\"monto\":25000}"
+curl -X POST http://localhost:8082/api/webpay-simulation/simulate/init -H "Content-Type: application/json" -d "{\"pedidoId\":1001,\"monto\":25000}"
 
 # Respuesta esperada:
 # {"token":"uuid-generado","monto":25000,"ordenCompra":"1001","url":"/api/webpay-simulation/simulate/uuid-generado"}
 
 # 5. Ver resultado en navegador
-# http://localhost:8081/api/webpay-simulation/simulate/uuid-generado
+# http://localhost:8082/api/webpay-simulation/simulate/uuid-generado
 ```
 
 ## Casos de Uso Recomendados
@@ -197,10 +197,10 @@ curl -X POST http://localhost:8081/api/webpay-simulation/simulate/init -H "Conte
 
 ## Solución de Problemas
 
-### Error: Puerto 8081 en uso
+### Error: Puerto 8082 en uso
 ```bash
 # Verificar procesos en el puerto
-netstat -ano | findstr :8081
+netstat -ano | findstr :8082
 
 # Terminar proceso si es necesario
 taskkill /PID {PID} /F
@@ -209,7 +209,7 @@ taskkill /PID {PID} /F
 ### Error: Aplicación no responde
 ```bash
 # Verificar salud de la aplicación
-curl http://localhost:8081/api/test/health
+curl http://localhost:8082/api/test/health
 ```
 
 ### Error: Token no encontrado

@@ -10,4 +10,5 @@ public class RegistroRequestDTO {
     private String password;
     private String telefono;
     private String direccion;
+    private Long rolId;
 } 

@@ -42,23 +42,23 @@ bcentral.api.url=https://api.sbif.cl/api-sbifv3/recursos_api/dolar?apikey=TU_API
 ### Opción 2: Usando cURL desde terminal
 ```bash
 # Obtener tasa de cambio del USD
-curl -X GET "http://localhost:8081/api/banco-central/tasa-cambio"
+curl -X GET "http://localhost:8082/api/banco-central/tasa-cambio"
 
 # Obtener todas las tasas
-curl -X GET "http://localhost:8081/api/banco-central/tasas-cambio"
+curl -X GET "http://localhost:8082/api/banco-central/tasas-cambio"
 
 # Convertir 100 USD a CLP
-curl -X GET "http://localhost:8081/api/banco-central/convertir-usd?montoUSD=100"
+curl -X GET "http://localhost:8082/api/banco-central/convertir-usd?montoUSD=100"
 
 # Convertir 50 EUR a CLP
-curl -X GET "http://localhost:8081/api/banco-central/convertir-eur?montoEUR=50"
+curl -X GET "http://localhost:8082/api/banco-central/convertir-eur?montoEUR=50"
 ```
 
 ### Opción 3: Usando Postman
 1. Importa las siguientes URLs en Postman:
-   - `http://localhost:8081/api/banco-central/tasa-cambio`
-   - `http://localhost:8081/api/banco-central/tasas-cambio`
-   - `http://localhost:8081/api/banco-central/convertir-usd?montoUSD=100`
+   - `http://localhost:8082/api/banco-central/tasa-cambio`
+   - `http://localhost:8082/api/banco-central/tasas-cambio`
+   - `http://localhost:8082/api/banco-central/convertir-usd?montoUSD=100`
 
 ## Casos de Prueba
 
@@ -115,7 +115,7 @@ curl -X GET "http://localhost:8081/api/banco-central/convertir-eur?montoEUR=50"
 - Los datos de respaldo funcionan cuando la API falla
 
 ### ❌ Problemas Comunes:
-- Error 500: Verificar que la aplicación esté corriendo en puerto 8081
+- Error 500: Verificar que la aplicación esté corriendo en puerto 8082
 - Tasas de respaldo: La API del Banco Central no está disponible
 - Errores de conversión: Verificar que los montos sean números válidos
 
@@ -124,7 +124,7 @@ curl -X GET "http://localhost:8081/api/banco-central/convertir-eur?montoEUR=50"
 ### La aplicación no responde
 ```bash
 # Verificar que esté corriendo
-curl http://localhost:8081/actuator/health
+curl http://localhost:8082/actuator/health
 ```
 
 ### Error de conexión al Banco Central

@@ -28,8 +28,8 @@ spring.datasource.password=
 
 Accede a la aplicación:
 
- Navegador: http://localhost:8080
- Documentación API: http://localhost:8080/swagger-ui.html
+ Navegador: http://localhost:8082
+ Documentación API: http://localhost:8082/swagger-ui.html
 
  Modelo de Datos
 El modelo de datos está implementado en src/main/resources/ferremas_db.sql. 
@@ -37,7 +37,7 @@ Contiene las tablas de usuarios, roles, productos, pedidos, pagos, etc.
 Incluye relaciones y claves foráneas.
 
 Documentación API / Webservice
-La documentación completa se genera automáticamente mediante Swagger / OpenAPI. Accede en: http://localhost:8080/swagger-ui.html
+La documentación completa se genera automáticamente mediante Swagger / OpenAPI. Accede en: http://localhost:8082/swagger-ui.html
 Incluye:
 
 Endpoints CRUD para Usuarios, Productos, Pedidos, Pagos, Mensajes.
@@ -94,7 +94,7 @@ Integración con WebPay y Banco Central.
 
 🔹 Vista Física:
 
-Servidor local Tomcat en puerto 8080.
+Servidor local Tomcat en puerto 8082.
 
 Base de datos MySQL en XAMPP.
 
