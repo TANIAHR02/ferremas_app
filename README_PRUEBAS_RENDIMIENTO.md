@@ -150,22 +150,3 @@ Min Response Time: 156ms
 Max Response Time: 2.3s
 ```
 
-## 🔗 Enlaces Útiles
-
-- [📖 Guía Completa](GUIA_PRUEBAS_RENDIMIENTO_JMETER.md)
-- [🌐 JMeter Oficial](https://jmeter.apache.org/)
-- [📚 Documentación](https://jmeter.apache.org/usermanual/index.html)
-- [🔧 Plugins](https://jmeter-plugins.org/)
-
-## 📞 Soporte
-
-Si encuentras problemas:
-
-1. **Revisar logs** de la aplicación
-2. **Verificar** configuración de JMeter
-3. **Consultar** la guía completa
-4. **Documentar** el problema encontrado
-
----
-
-**¡Listo para probar el rendimiento de FerremasApp! 🚀** 
