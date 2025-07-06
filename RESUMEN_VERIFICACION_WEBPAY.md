@@ -111,14 +111,3 @@ curl -X POST http://localhost:8082/api/webpay-simulation/simulate/init \
 curl -X GET http://localhost:8082/api/webpay-simulation/simulate/transactions
 ```
 
-## 🎉 Conclusión
-
-**La simulación de WebPay está 100% funcional** y lista para usar. Puedes:
-
-- ✅ Crear transacciones simuladas
-- ✅ Configurar diferentes escenarios
-- ✅ Ver el historial de transacciones
-- ✅ Usar el panel de control web
-- ✅ Simular el proceso de pago completo
-
-**¡El sistema está listo para pruebas!** 
