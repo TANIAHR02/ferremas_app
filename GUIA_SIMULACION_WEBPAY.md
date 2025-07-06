@@ -207,15 +207,3 @@ Los logs muestran información sobre:
 5. **Limpieza**
    - Limpiar transacciones de prueba
    - Verificar que no queden datos residuales
-
-## 📞 Soporte
-
-Si encuentras problemas:
-1. Revisa esta guía
-2. Verifica los logs de la aplicación
-3. Ejecuta las pruebas de diagnóstico
-4. Consulta la documentación del código
-
----
-
-**Nota**: Esta simulación es solo para pruebas. No realiza transacciones reales con WebPay/Transbank. 
