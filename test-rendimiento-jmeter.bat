@@ -89,6 +89,3 @@ if %errorlevel% equ 0 (
     echo • JMeter este correctamente instalado
     echo.
 )
-
-echo Presiona cualquier tecla para continuar...
-pause > nul 
