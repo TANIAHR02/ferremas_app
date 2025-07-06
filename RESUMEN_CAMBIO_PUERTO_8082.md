@@ -100,9 +100,3 @@ curl http://localhost:8082/actuator/health
 # Verificar que no hay referencias al puerto anterior
 grep -r "8081" *.md *.http *.bat
 ```
-
-**Resultado esperado**: No debe encontrar ninguna referencia al puerto 8081.
-
----
-*Actualizado el: 2 de Julio de 2025*
-*Estado: ✅ Completado* 
