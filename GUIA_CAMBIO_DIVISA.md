@@ -142,22 +142,3 @@ curl http://localhost:8082/actuator/health
 2. **API Gratuita**: La API del Banco Central tiene límites de uso gratuito
 3. **Tasas en Tiempo Real**: Las tasas se obtienen en tiempo real cuando la API está disponible
 4. **Monedas Soportadas**: USD, EUR y CLP (peso chileno)
-
-## ejecutar
-
-Esta implementación incluye:
-- ✅ Conexión real al Banco Central de Chile
-- ✅ Manejo de errores y datos de respaldo
-- ✅ Endpoints REST para todas las operaciones
-- ✅ Pruebas automatizadas con archivos HTTP
-- ✅ Documentación completa
-- ✅ Código limpio y bien estructurado 
-
-## Ejecutar Pruebas
-
-Para ejecutar todas las pruebas automáticamente, sigue estos pasos:
-
-1. Descarga el archivo `ejecutar-pruebas.bat`
-2. Ejecuta el archivo haciendo doble clic
-
-¡Tu funcionalidad de cambio de divisas está completamente probada y lista para demostrar! 🎯 
